@@ -8,8 +8,26 @@
 
 config_version=5
 
+[animation]
+
+compatibility/default_parent_skeleton_in_mesh_instance_3d=true
+
 [application]
 
 config/name="Runes and Ranks"
-config/features=PackedStringArray("4.5", "Forward Plus")
-config/icon="res://icon.svg"
+run/main_scene="uid://c12ns4usi4lin"
+config/features=PackedStringArray("4.6", "Forward Plus")
+config/icon="uid://mbvyuuwd8uq4"
+
+[display]
+
+window/size/viewport_width=640
+window/size/viewport_height=360
+window/size/window_width_override=1300
+window/size/window_height_override=750
+window/stretch/mode="viewport"
+window/stretch/scale_mode="integer"
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0

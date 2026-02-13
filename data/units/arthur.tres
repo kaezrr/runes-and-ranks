@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="UnitStats" format=3 uid="uid://di3y6kakcfkeb"]
+
+[ext_resource type="Script" uid="uid://ibhkeatocpnu" path="res://data/units/unit_stats.gd" id="1_b6a51"]
+
+[resource]
+script = ExtResource("1_b6a51")
+name = "Arthur"
+rarity = 2
+gold_cost = 4
+skin_coordinates = Vector2i(4, 2)
+metadata/_custom_type_script = "uid://ibhkeatocpnu"

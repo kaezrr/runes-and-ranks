@@ -36,3 +36,12 @@ func get_all_units() -> Array[Unit]:
 			unit_array.append(unit)
 			
 	return unit_array
+
+func remove_unit(tile: Vector2i) -> void:
+	var unit := units[tile] as Node
+	
+	if not unit:
+		return
+		
+	units[tile] = null
+	unit_grid_changed.emit()

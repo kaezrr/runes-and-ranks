@@ -7,6 +7,8 @@
 [ext_resource type="Script" uid="uid://cyg77enqowh2g" path="res://components/unit_grid.gd" id="4_asdgj"]
 [ext_resource type="Script" uid="uid://c5a1gjagr31c5" path="res://components/play_area.gd" id="4_jx0ua"]
 [ext_resource type="Script" uid="uid://c08v8ppw7i1kx" path="res://components/tile_highlighter.gd" id="6_u52cf"]
+[ext_resource type="Resource" uid="uid://di3y6kakcfkeb" path="res://data/units/arthur.tres" id="7_6w4xk"]
+[ext_resource type="Script" uid="uid://bn42qh5gwtmyb" path="res://components/unit_mover.gd" id="8_ii07k"]
 
 [sub_resource type="Curve" id="Curve_olpmc"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.20083682, 1), 0.0, 0.0, 0, 0, Vector2(0.79916316, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -60,12 +62,13 @@ texture = ExtResource("2_wl4x5")
 lifetime = 6.0
 process_material = SubResource("ParticleProcessMaterial_7ft05")
 
-[node name="GameArea" type="TileMapLayer" parent="." unique_id=1732605207 node_paths=PackedStringArray("unit_grid")]
+[node name="GameArea" type="TileMapLayer" parent="." unique_id=1732605207 node_paths=PackedStringArray("unit_grid", "tile_highlighter")]
 position = Vector2(160, 32)
 tile_map_data = PackedByteArray("AAAAAAEAAAAAAAwAAAAAAAMAAAACAAwAAAAAAAUAAAAAAAwAAAABAAAAAAAAAAwAAAABAAIAAAAAAAwAAAABAAQAAAAAAAwAAAABAAYAAAABAAwAAAACAAEAAAACAAwAAAACAAMAAAAAAAwAAAACAAUAAAAAAAwAAAADAAAAAAAAAAwAAAADAAIAAAABAAwAAAADAAQAAAADAAwAAAADAAYAAAAAAAwAAAAEAAEAAAAAAAwAAAAEAAMAAAAAAAwAAAAEAAUAAAAAAAwAAAAFAAAAAAADAAwAAAAFAAIAAAAAAAwAAAAFAAQAAAAAAAwAAAAFAAYAAAAAAAwAAAAGAAEAAAAAAAwAAAAGAAMAAAAAAAwAAAAGAAUAAAAAAAwAAAAHAAAAAAABAAwAAAAHAAIAAAAAAAwAAAAHAAQAAAABAAwAAAAHAAYAAAAAAAwAAAAIAAEAAAAAAAwAAAAIAAMAAAAAAAwAAAAIAAUAAAAAAAwAAAAJAAAAAAAAAAwAAAAJAAIAAAAAAAwAAAAJAAQAAAAAAAwAAAAJAAYAAAACAAwAAAA=")
 tile_set = ExtResource("1_e05a3")
 script = ExtResource("4_jx0ua")
 unit_grid = NodePath("ArenaUnitGrid")
+tile_highlighter = NodePath("TileHighlighter")
 metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
 
@@ -81,18 +84,27 @@ tile_set = ExtResource("1_e05a3")
 script = ExtResource("4_asdgj")
 size = Vector2i(4, 7)
 
+[node name="Unit2" parent="GameArea/ArenaUnitGrid" unique_id=347148219 instance=ExtResource("4_aj7ud")]
+position = Vector2(32, 160)
+stats = ExtResource("7_6w4xk")
+
+[node name="Unit" parent="GameArea/ArenaUnitGrid" unique_id=702824173 instance=ExtResource("4_aj7ud")]
+position = Vector2(64, 96)
+
 [node name="TileHighlighter" type="Node" parent="GameArea" unique_id=1029316856 node_paths=PackedStringArray("play_area", "highlight_layer")]
 script = ExtResource("6_u52cf")
+enabled = false
 play_area = NodePath("..")
 highlight_layer = NodePath("../Highlight")
 tile = Vector2i(3, 0)
 
-[node name="Bench" type="TileMapLayer" parent="." unique_id=1138607735 node_paths=PackedStringArray("unit_grid")]
+[node name="Bench" type="TileMapLayer" parent="." unique_id=1138607735 node_paths=PackedStringArray("unit_grid", "tile_highlighter")]
 position = Vector2(160, 320)
 tile_map_data = PackedByteArray("AAAAAAAAAAAAAAsAAAABAAAAAAAAAAcAAAACAAAAAAAAAAsAAAADAAAAAAAAAAcAAAAEAAAAAAAAAAsAAAAFAAAAAAAAAAcAAAAGAAAAAAAAAAsAAAAHAAAAAAAAAAcAAAAIAAAAAAAAAAsAAAAJAAAAAAAAAAcAAAA=")
 tile_set = ExtResource("1_e05a3")
 script = ExtResource("4_jx0ua")
 unit_grid = NodePath("BenchUnitGrid")
+tile_highlighter = NodePath("TileHighlighter")
 metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
 
@@ -106,12 +118,11 @@ size = Vector2i(10, 1)
 
 [node name="TileHighlighter" type="Node" parent="Bench" unique_id=994433050 node_paths=PackedStringArray("play_area", "highlight_layer")]
 script = ExtResource("6_u52cf")
+enabled = false
 play_area = NodePath("..")
 highlight_layer = NodePath("../Highlight")
 tile = Vector2i(3, 0)
 
-[node name="Unit2" parent="." unique_id=347148219 instance=ExtResource("4_aj7ud")]
-position = Vector2(192, 192)
-
-[node name="Unit" parent="." unique_id=702824173 instance=ExtResource("4_aj7ud")]
-position = Vector2(224, 128)
+[node name="UnitMover" type="Node" parent="." unique_id=2056013724 node_paths=PackedStringArray("play_areas")]
+script = ExtResource("8_ii07k")
+play_areas = [NodePath("../GameArea"), NodePath("../Bench")]

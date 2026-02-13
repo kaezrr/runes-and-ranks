@@ -48,6 +48,7 @@ region_enabled = true
 region_rect = Rect2(32, 96, 32, 32)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1501529597]
+visible = false
 position = Vector2(16, 8)
 shape = SubResource("RectangleShape2D_fmv3f")
 
@@ -77,7 +78,7 @@ target = NodePath("..")
 script = ExtResource("5_vgvef")
 target = NodePath("../Visuals/Skin")
 lerp_seconds = 0.3
-rotation_multiplier = 40
+max_rotation_degrees = 30
 
 [node name="OutlineHighlighter" type="Node" parent="." unique_id=1144262254 node_paths=PackedStringArray("visuals")]
 script = ExtResource("7_0wuuu")

@@ -8,7 +8,9 @@
 [ext_resource type="Script" uid="uid://c5a1gjagr31c5" path="res://components/play_area.gd" id="4_jx0ua"]
 [ext_resource type="Script" uid="uid://c08v8ppw7i1kx" path="res://components/tile_highlighter.gd" id="6_u52cf"]
 [ext_resource type="Resource" uid="uid://di3y6kakcfkeb" path="res://data/units/arthur.tres" id="7_6w4xk"]
+[ext_resource type="Resource" uid="uid://5todr0m43tgk" path="res://data/units/robin.tres" id="8_2ml6w"]
 [ext_resource type="Script" uid="uid://bn42qh5gwtmyb" path="res://components/unit_mover.gd" id="8_ii07k"]
+[ext_resource type="Script" uid="uid://cphgqhktrissp" path="res://components/unit_spawner.gd" id="11_xgbxb"]
 
 [sub_resource type="Curve" id="Curve_olpmc"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.20083682, 1), 0.0, 0.0, 0, 0, Vector2(0.79916316, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -84,12 +86,16 @@ tile_set = ExtResource("1_e05a3")
 script = ExtResource("4_asdgj")
 size = Vector2i(4, 7)
 
+[node name="Unit" parent="GameArea/ArenaUnitGrid" unique_id=702824173 instance=ExtResource("4_aj7ud")]
+position = Vector2(64, 96)
+
 [node name="Unit2" parent="GameArea/ArenaUnitGrid" unique_id=347148219 instance=ExtResource("4_aj7ud")]
 position = Vector2(32, 160)
 stats = ExtResource("7_6w4xk")
 
-[node name="Unit" parent="GameArea/ArenaUnitGrid" unique_id=702824173 instance=ExtResource("4_aj7ud")]
-position = Vector2(64, 96)
+[node name="Unit3" parent="GameArea/ArenaUnitGrid" unique_id=1387256145 instance=ExtResource("4_aj7ud")]
+position = Vector2(96, 160)
+stats = ExtResource("8_2ml6w")
 
 [node name="TileHighlighter" type="Node" parent="GameArea" unique_id=1029316856 node_paths=PackedStringArray("play_area", "highlight_layer")]
 script = ExtResource("6_u52cf")
@@ -126,3 +132,10 @@ tile = Vector2i(3, 0)
 [node name="UnitMover" type="Node" parent="." unique_id=2056013724 node_paths=PackedStringArray("play_areas")]
 script = ExtResource("8_ii07k")
 play_areas = [NodePath("../GameArea"), NodePath("../Bench")]
+
+[node name="UnitSpawner" type="Node" parent="." unique_id=146144262 node_paths=PackedStringArray("bench", "game_area")]
+script = ExtResource("11_xgbxb")
+bench = NodePath("../Bench")
+game_area = NodePath("../GameArea")
+
+[connection signal="unit_spawned" from="UnitSpawner" to="." method="_on_unit_spawner_unit_spawned"]

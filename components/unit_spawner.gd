@@ -8,14 +8,6 @@ const UNIT = preload("res://scenes/unit/unit.tscn")
 @export var bench: PlayArea
 @export var game_area: PlayArea
 
-func _ready() -> void:
-	var robin := preload("res://data/units/robin.tres")
-	var tween := create_tween()
-	
-	for i in 15:
-		tween.tween_callback(spawn_unit.bind(robin))
-		tween.tween_interval(0.5)
-
 func _get_first_available_area() -> PlayArea:
 	if not bench.unit_grid.is_grid_full():
 		return bench

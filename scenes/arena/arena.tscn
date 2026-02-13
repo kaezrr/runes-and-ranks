@@ -11,6 +11,8 @@
 [ext_resource type="Resource" uid="uid://5todr0m43tgk" path="res://data/units/robin.tres" id="8_2ml6w"]
 [ext_resource type="Script" uid="uid://bn42qh5gwtmyb" path="res://components/unit_mover.gd" id="8_ii07k"]
 [ext_resource type="Script" uid="uid://cphgqhktrissp" path="res://components/unit_spawner.gd" id="11_xgbxb"]
+[ext_resource type="PackedScene" uid="uid://4jsfsnnm5ba1" path="res://scenes/sell_portal/sell_portal.tscn" id="12_vmsrg"]
+[ext_resource type="Resource" uid="uid://bkknped6ni3gb" path="res://data/player/player_stats.tres" id="13_s83md"]
 
 [sub_resource type="Curve" id="Curve_olpmc"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.20083682, 1), 0.0, 0.0, 0, 0, Vector2(0.79916316, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -137,5 +139,9 @@ play_areas = [NodePath("../GameArea"), NodePath("../Bench")]
 script = ExtResource("11_xgbxb")
 bench = NodePath("../Bench")
 game_area = NodePath("../GameArea")
+
+[node name="SellPortal" parent="." unique_id=265665824 instance=ExtResource("12_vmsrg")]
+position = Vector2(80, 288)
+player_stats = ExtResource("13_s83md")
 
 [connection signal="unit_spawned" from="UnitSpawner" to="." method="_on_unit_spawner_unit_spawned"]

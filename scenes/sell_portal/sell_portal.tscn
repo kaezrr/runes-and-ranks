@@ -1,0 +1,69 @@
+[gd_scene format=3 uid="uid://4jsfsnnm5ba1"]
+
+[ext_resource type="Material" uid="uid://bb8m5fhpi4wqn" path="res://assets/shaders/2d_outline_shader.tres" id="1_g4w48"]
+[ext_resource type="Script" uid="uid://dbaollcqbgqlt" path="res://scenes/sell_portal/sell_portal.gd" id="1_q37ab"]
+[ext_resource type="Texture2D" uid="uid://b1ro1ssup7dcp" path="res://assets/sprites/tiles.png" id="2_se251"]
+[ext_resource type="Script" uid="uid://wsjijo1e6udy" path="res://components/outline_highlighter.gd" id="3_q37ab"]
+[ext_resource type="Texture2D" uid="uid://c4awhqfup7o2k" path="res://assets/sprites/gold.png" id="4_se251"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gmlex"]
+radius = 24.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_q37ab"]
+shadow_size = 2
+shadow_color = Color(0, 0, 0, 0.4627451)
+
+[node name="SellPortal" type="Area2D" unique_id=265665824]
+script = ExtResource("1_q37ab")
+
+[node name="Visuals" type="CanvasGroup" parent="." unique_id=1200069799]
+material = ExtResource("1_g4w48")
+
+[node name="Sprite2D" type="Sprite2D" parent="Visuals" unique_id=1602282121]
+position = Vector2(16, 16)
+texture = ExtResource("2_se251")
+region_enabled = true
+region_rect = Rect2(224, 512, 32, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=833820368]
+position = Vector2(16, 16)
+shape = SubResource("CircleShape2D_gmlex")
+
+[node name="OutlineHighlighter" type="Node" parent="." unique_id=1137515411 node_paths=PackedStringArray("visuals")]
+script = ExtResource("3_q37ab")
+visuals = NodePath("../Visuals")
+outline_color = Color(0.5568628, 0.9137255, 0.74509805, 1)
+outline_thickness = 2
+
+[node name="Label" type="Label" parent="." unique_id=924030484]
+offset_top = 36.0
+offset_right = 32.0
+offset_bottom = 54.0
+text = "sell"
+label_settings = SubResource("LabelSettings_q37ab")
+horizontal_alignment = 1
+
+[node name="Gold" type="HBoxContainer" parent="." unique_id=1401026920]
+unique_name_in_owner = true
+visible = false
+offset_top = 51.0
+offset_right = 32.0
+offset_bottom = 69.0
+alignment = 1
+
+[node name="GoldLabel" type="Label" parent="Gold" unique_id=595776748]
+unique_name_in_owner = true
+layout_mode = 2
+text = "99"
+label_settings = SubResource("LabelSettings_q37ab")
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Gold" unique_id=1639299272]
+custom_minimum_size = Vector2(9, 0)
+layout_mode = 2
+texture = ExtResource("4_se251")
+expand_mode = 1
+stretch_mode = 5
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]

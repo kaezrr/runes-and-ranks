@@ -3,6 +3,7 @@
 [ext_resource type="TileSet" uid="uid://datj6xr4ljj4w" path="res://scenes/arena/tileset.tres" id="1_e05a3"]
 [ext_resource type="Script" uid="uid://crcui2h3duuoa" path="res://scenes/arena/arena.gd" id="1_olpmc"]
 [ext_resource type="Texture2D" uid="uid://mbxv0ayrsu3d" path="res://assets/sprites/star_particle.png" id="2_wl4x5"]
+[ext_resource type="PackedScene" uid="uid://f75omd0gduxn" path="res://scenes/unit/unit.tscn" id="4_aj7ud"]
 
 [sub_resource type="Curve" id="Curve_olpmc"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.20083682, 1), 0.0, 0.0, 0, 0, Vector2(0.79916316, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -80,3 +81,9 @@ metadata/_edit_group_ = true
 
 [node name="Highlight" type="TileMapLayer" parent="Bench" unique_id=790784231]
 tile_set = ExtResource("1_e05a3")
+
+[node name="Unit2" parent="." unique_id=347148219 instance=ExtResource("4_aj7ud")]
+position = Vector2(192, 192)
+
+[node name="Unit" parent="." unique_id=702824173 instance=ExtResource("4_aj7ud")]
+position = Vector2(224, 128)

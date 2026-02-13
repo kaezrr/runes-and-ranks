@@ -28,6 +28,10 @@ window/size/window_height_override=750
 window/stretch/mode="viewport"
 window/stretch/scale_mode="integer"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/godot_vim/plugin.cfg")
+
 [input]
 
 select={
@@ -44,3 +48,4 @@ cancel_drag={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+2d/snap/snap_2d_transforms_to_pixel=true

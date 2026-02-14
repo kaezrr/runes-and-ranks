@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://mcr8wal3mkvd"]
+
+[node name="Shop" type="VBoxContainer" unique_id=785359869]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+
+[node name="Top" type="HBoxContainer" parent="." unique_id=1381191672]
+layout_mode = 2
+
+[node name="Bottom" type="HBoxContainer" parent="." unique_id=636080486]
+layout_mode = 2

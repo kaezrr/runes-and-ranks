@@ -1,0 +1,153 @@
+[gd_scene format=3 uid="uid://2hdb6ikcdtwi"]
+
+[ext_resource type="Script" uid="uid://ca1hdp1trnm4k" path="res://scenes/unit_card/unit_card.gd" id="1_2ee4v"]
+[ext_resource type="FontFile" uid="uid://8di0jvr25vat" path="res://assets/font/m5x7.ttf" id="1_efctb"]
+[ext_resource type="Texture2D" uid="uid://c4awhqfup7o2k" path="res://assets/sprites/gold.png" id="2_2ee4v"]
+[ext_resource type="Resource" uid="uid://bkknped6ni3gb" path="res://data/player/player_stats.tres" id="2_2yriv"]
+[ext_resource type="Texture2D" uid="uid://cx1ivjobggp8n" path="res://assets/sprites/rogues.png" id="3_8ee35"]
+[ext_resource type="Resource" uid="uid://di3y6kakcfkeb" path="res://data/units/arthur.tres" id="3_27mlq"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_2yriv"]
+line_spacing = 0.0
+font = ExtResource("1_efctb")
+font_color = Color(0.6, 0.8627451, 1, 0.7294118)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_27mlq"]
+bg_color = Color(0.07058824, 0.2901961, 0.18039216, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i2qy8"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.07058824, 0.2901961, 0.18039216, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4b8rp"]
+atlas = ExtResource("3_8ee35")
+region = Rect2(32, 96, 32, 32)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_00nd2"]
+bg_color = Color(0, 0, 0, 1)
+
+[node name="UnitCard" type="Button" unique_id=1813936211]
+custom_minimum_size = Vector2(80, 52)
+offset_right = 8.0
+offset_bottom = 8.0
+focus_mode = 0
+script = ExtResource("1_2ee4v")
+player_stats = ExtResource("2_2yriv")
+unit_stats = ExtResource("3_27mlq")
+
+[node name="BackDrop" type="ColorRect" parent="." unique_id=356285402]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0.08235294, 0.1254902, 1)
+
+[node name="Traits" type="Label" parent="BackDrop" unique_id=1826167509]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 44.0
+offset_bottom = 30.0
+text = "viking
+fighter"
+label_settings = SubResource("LabelSettings_2yriv")
+
+[node name="Bottom" type="Panel" parent="." unique_id=454419729]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 18)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_27mlq")
+
+[node name="MarginContainer" type="MarginContainer" parent="Bottom" unique_id=530263341]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_right = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Bottom/MarginContainer" unique_id=193606508]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="UnitName" type="Label" parent="Bottom/MarginContainer/HBoxContainer" unique_id=2000170185]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Arthur"
+
+[node name="GoldContainer" type="HBoxContainer" parent="Bottom/MarginContainer/HBoxContainer" unique_id=939870477]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_constants/separation = 2
+alignment = 2
+
+[node name="GoldIcon" type="TextureRect" parent="Bottom/MarginContainer/HBoxContainer/GoldContainer" unique_id=1335987502]
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("2_2ee4v")
+stretch_mode = 5
+
+[node name="GoldCost" type="Label" parent="Bottom/MarginContainer/HBoxContainer/GoldContainer" unique_id=1480152619]
+unique_name_in_owner = true
+layout_mode = 2
+text = "1"
+
+[node name="Border" type="Panel" parent="." unique_id=1431461550]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_i2qy8")
+
+[node name="UnitIcon" type="TextureRect" parent="." unique_id=638465749]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 2.0
+offset_right = 34.0
+offset_bottom = 32.0
+grow_horizontal = 2
+mouse_filter = 2
+texture = SubResource("AtlasTexture_4b8rp")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="EmptyPlaceholder" type="Panel" parent="." unique_id=1488674598]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_00nd2")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="pressed" from="." to="." method="_on_pressed"]

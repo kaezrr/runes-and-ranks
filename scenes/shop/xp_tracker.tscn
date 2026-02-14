@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://bbya6bj8a11e4"]
+
+[ext_resource type="Script" uid="uid://cfn0ehf5l4ld5" path="res://scenes/shop/xp_tracker.gd" id="1_ip1kv"]
+[ext_resource type="FontFile" uid="uid://8di0jvr25vat" path="res://assets/font/m5x7.ttf" id="1_lx3xh"]
+[ext_resource type="Resource" uid="uid://bkknped6ni3gb" path="res://data/player/player_stats.tres" id="2_1ujo4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ip1kv"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1ujo4"]
+bg_color = Color(0.3372549, 0.63529414, 0.88235295, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_q8w0o"]
+font = ExtResource("1_lx3xh")
+shadow_size = 2
+shadow_color = Color(0, 0, 0, 0.6509804)
+
+[node name="XPTracker" type="VBoxContainer" unique_id=1932900830]
+custom_minimum_size = Vector2(70, 28)
+offset_right = 70.0
+offset_bottom = 28.0
+theme_override_constants/separation = 0
+alignment = 1
+script = ExtResource("1_ip1kv")
+player_stats = ExtResource("2_1ujo4")
+
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=1491587190]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_ip1kv")
+theme_override_styles/fill = SubResource("StyleBoxFlat_1ujo4")
+value = 70.0
+show_percentage = false
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1077081168]
+layout_mode = 2
+
+[node name="XPLabel" type="Label" parent="HBoxContainer" unique_id=489683875]
+unique_name_in_owner = true
+layout_mode = 2
+text = "99/99"
+label_settings = SubResource("LabelSettings_q8w0o")
+
+[node name="LevelLabel" type="Label" parent="HBoxContainer" unique_id=265210022]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "lvl: 1"
+label_settings = SubResource("LabelSettings_q8w0o")
+horizontal_alignment = 2

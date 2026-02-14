@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://ixxtst51a07e"]
+
+[ext_resource type="StyleBox" uid="uid://c3ias4kwkl52j" path="res://assets/theme/shop_button_normal.tres" id="1_r8a0b"]
+[ext_resource type="StyleBox" uid="uid://mgcn15cjl08u" path="res://assets/theme/shop_button_pressed.tres" id="2_em7wd"]
+[ext_resource type="StyleBox" uid="uid://5qdjlavnhcfk" path="res://assets/theme/shop_button_hover.tres" id="3_l8f74"]
+[ext_resource type="FontFile" uid="uid://8di0jvr25vat" path="res://assets/font/m5x7.ttf" id="4_ek4as"]
+[ext_resource type="Script" uid="uid://ber3trf277cnv" path="res://scenes/shop/xp_button.gd" id="4_em7wd"]
+[ext_resource type="Resource" uid="uid://bkknped6ni3gb" path="res://data/player/player_stats.tres" id="5_l8f74"]
+[ext_resource type="Texture2D" uid="uid://c4awhqfup7o2k" path="res://assets/sprites/gold.png" id="5_xq16x"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_swwis"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_xlp2r"]
+font = ExtResource("4_ek4as")
+shadow_size = 2
+shadow_color = Color(0, 0, 0, 0.54901963)
+
+[node name="XPButton" type="Button" unique_id=1330862669]
+custom_minimum_size = Vector2(30, 30)
+offset_right = 8.0
+offset_bottom = 8.0
+theme_override_styles/normal = ExtResource("1_r8a0b")
+theme_override_styles/pressed = ExtResource("2_em7wd")
+theme_override_styles/hover = ExtResource("3_l8f74")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_swwis")
+script = ExtResource("4_em7wd")
+player_stats = ExtResource("5_l8f74")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=540566447]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="XPLabel" type="Label" parent="VBoxContainer" unique_id=448240282]
+layout_mode = 2
+text = "+XP"
+label_settings = SubResource("LabelSettings_xlp2r")
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=537333518]
+layout_mode = 2
+theme_override_constants/separation = 2
+alignment = 1
+
+[node name="GoldLabel" type="Label" parent="VBoxContainer/HBoxContainer" unique_id=1352978909]
+layout_mode = 2
+text = "4"
+label_settings = SubResource("LabelSettings_xlp2r")
+horizontal_alignment = 1
+
+[node name="GoldIcon" type="TextureRect" parent="VBoxContainer/HBoxContainer" unique_id=1660647089]
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("5_xq16x")
+stretch_mode = 5
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

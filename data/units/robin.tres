@@ -1,9 +1,13 @@
 [gd_resource type="Resource" script_class="UnitStats" format=3 uid="uid://5todr0m43tgk"]
 
 [ext_resource type="Script" uid="uid://ibhkeatocpnu" path="res://data/units/unit_stats.gd" id="1_wtcgd"]
+[ext_resource type="Script" uid="uid://2thj6nv06jm5" path="res://data/traits/trait.gd" id="2_6kg50"]
+[ext_resource type="Resource" uid="uid://8ytlj4qw8aa1" path="res://data/traits/elf.tres" id="3_krl74"]
+[ext_resource type="Resource" uid="uid://bkeyqh1h8xplw" path="res://data/traits/ranger.tres" id="4_ke7c6"]
 
 [resource]
 script = ExtResource("1_wtcgd")
 name = "Robin"
+traits = Array[ExtResource("2_6kg50")]([ExtResource("3_krl74"), ExtResource("4_ke7c6")])
 skin_coordinates = Vector2i(2, 0)
 metadata/_custom_type_script = "uid://ibhkeatocpnu"

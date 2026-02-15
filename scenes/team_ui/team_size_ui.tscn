@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://bpbw7q1yv714x"]
+
+[ext_resource type="Script" uid="uid://mcyvueyen6fk" path="res://scenes/team_ui/team_size_ui.gd" id="1_h8yxk"]
+[ext_resource type="Texture2D" uid="uid://ckect222m1bin" path="res://assets/sprites/warning.png" id="2_r3p1u"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ew30x"]
+shadow_size = 2
+shadow_color = Color(0, 0, 0, 0.6627451)
+
+[node name="TeamSizeUI" type="PanelContainer" unique_id=2055806493]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -23.0
+offset_top = 4.0
+offset_right = 23.0
+offset_bottom = 28.0
+grow_horizontal = 2
+script = ExtResource("1_h8yxk")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=978250415]
+layout_mode = 2
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=864499114]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="UnitCount" type="Label" parent="MarginContainer/VBoxContainer" unique_id=255269573]
+unique_name_in_owner = true
+layout_mode = 2
+text = "10/10"
+label_settings = SubResource("LabelSettings_ew30x")
+horizontal_alignment = 1
+
+[node name="TooManyUnitsIcon" type="TextureRect" parent="MarginContainer/VBoxContainer" unique_id=1995066649]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+texture = ExtResource("2_r3p1u")
+stretch_mode = 5

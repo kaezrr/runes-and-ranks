@@ -15,6 +15,8 @@
 [ext_resource type="PackedScene" uid="uid://4jsfsnnm5ba1" path="res://scenes/sell_portal/sell_portal.tscn" id="12_vmsrg"]
 [ext_resource type="Script" uid="uid://crmyfndcltos2" path="res://components/unit_combiner.gd" id="13_fv88w"]
 [ext_resource type="PackedScene" uid="uid://mcr8wal3mkvd" path="res://scenes/shop/shop.tscn" id="14_fv88w"]
+[ext_resource type="PackedScene" uid="uid://bpbw7q1yv714x" path="res://scenes/team_ui/team_size_ui.tscn" id="16_t3vx8"]
+[ext_resource type="Resource" uid="uid://bkknped6ni3gb" path="res://data/player/player_stats.tres" id="17_rhjlh"]
 
 [sub_resource type="Curve" id="Curve_olpmc"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.20083682, 1), 0.0, 0.0, 0, 0, Vector2(0.79916316, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -39,7 +41,7 @@ scale_max = 0.19999999
 scale_curve = SubResource("CurveTexture_xdvfk")
 color = Color(1, 1, 1, 0.49411765)
 
-[sub_resource type="Resource" id="Resource_t3vx8"]
+[sub_resource type="Resource" id="Resource_rhjlh"]
 resource_local_to_scene = true
 script = ExtResource("8_w4nra")
 name = "Bjorn"
@@ -131,7 +133,7 @@ tile = Vector2i(3, 0)
 
 [node name="Unit" parent="Bench" unique_id=702824173 instance=ExtResource("4_aj7ud")]
 position = Vector2(64, -192)
-stats = SubResource("Resource_t3vx8")
+stats = SubResource("Resource_rhjlh")
 
 [node name="Unit2" parent="Bench" unique_id=347148219 instance=ExtResource("4_aj7ud")]
 position = Vector2(32, -128)
@@ -165,5 +167,9 @@ one_shot = true
 
 [node name="Shop" parent="UI" unique_id=785359869 instance=ExtResource("14_fv88w")]
 unique_name_in_owner = true
+
+[node name="TeamSizeUI" parent="UI" unique_id=2055806493 node_paths=PackedStringArray("arena_grid") instance=ExtResource("16_t3vx8")]
+player_stats = ExtResource("17_rhjlh")
+arena_grid = NodePath("../../GameArea/ArenaUnitGrid")
 
 [connection signal="unit_spawned" from="UnitSpawner" to="." method="_on_unit_spawner_unit_spawned"]

@@ -6,7 +6,9 @@
 [ext_resource type="Material" uid="uid://bb8m5fhpi4wqn" path="res://assets/shaders/2d_outline_shader.tres" id="3_3po7s"]
 [ext_resource type="Script" uid="uid://dfmvnokes7tbi" path="res://components/drag_and_drop.gd" id="4_bhlit"]
 [ext_resource type="Script" uid="uid://gvlhjn5c0g1o" path="res://components/velocity_based_rotation.gd" id="5_vgvef"]
+[ext_resource type="PackedScene" uid="uid://b2wqkhfnx4hsw" path="res://scenes/unit/tier_icon.tscn" id="5_w7udy"]
 [ext_resource type="Script" uid="uid://wsjijo1e6udy" path="res://components/outline_highlighter.gd" id="7_0wuuu"]
+[ext_resource type="Script" uid="uid://8f2ysq0scjnq" path="res://components/unit_animations.gd" id="9_vqlpx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fmv3f"]
 size = Vector2(36, 36)
@@ -72,6 +74,10 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_bhlit")
 value = 30.0
 show_percentage = false
 
+[node name="TierIcon" parent="." unique_id=2109152366 instance=ExtResource("5_w7udy")]
+offset_top = -13.0
+offset_bottom = -3.0
+
 [node name="DragAndDrop" type="Node" parent="." unique_id=1150624599 node_paths=PackedStringArray("target")]
 script = ExtResource("4_bhlit")
 target = NodePath("..")
@@ -87,6 +93,11 @@ script = ExtResource("7_0wuuu")
 visuals = NodePath("../Visuals")
 outline_color = Color(1, 1, 1, 1)
 outline_thickness = 2
+
+[node name="UnitAnimations" type="Node" parent="." unique_id=2132620723 node_paths=PackedStringArray("unit")]
+script = ExtResource("9_vqlpx")
+unit = NodePath("..")
+metadata/_custom_type_script = "uid://8f2ysq0scjnq"
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

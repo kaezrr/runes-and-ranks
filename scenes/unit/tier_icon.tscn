@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://b2wqkhfnx4hsw"]
+
+[ext_resource type="Texture2D" uid="uid://cj1cl8jdui60n" path="res://assets/sprites/level1.png" id="1_rhyxa"]
+[ext_resource type="Script" uid="uid://cuww8i7uw0xdl" path="res://scenes/unit/tier_icon.gd" id="2_l5pco"]
+
+[node name="TierIcon" type="TextureRect" unique_id=2109152366]
+custom_minimum_size = Vector2(10, 10)
+offset_right = 10.0
+offset_bottom = 10.0
+texture = ExtResource("1_rhyxa")
+stretch_mode = 5
+script = ExtResource("2_l5pco")

@@ -10,8 +10,10 @@
 [ext_resource type="Resource" uid="uid://di3y6kakcfkeb" path="res://data/units/arthur.tres" id="7_6w4xk"]
 [ext_resource type="Resource" uid="uid://5todr0m43tgk" path="res://data/units/robin.tres" id="8_2ml6w"]
 [ext_resource type="Script" uid="uid://bn42qh5gwtmyb" path="res://components/unit_mover.gd" id="8_ii07k"]
+[ext_resource type="Script" uid="uid://ibhkeatocpnu" path="res://data/units/unit_stats.gd" id="8_w4nra"]
 [ext_resource type="Script" uid="uid://cphgqhktrissp" path="res://components/unit_spawner.gd" id="11_xgbxb"]
 [ext_resource type="PackedScene" uid="uid://4jsfsnnm5ba1" path="res://scenes/sell_portal/sell_portal.tscn" id="12_vmsrg"]
+[ext_resource type="Script" uid="uid://crmyfndcltos2" path="res://components/unit_combiner.gd" id="13_fv88w"]
 [ext_resource type="PackedScene" uid="uid://mcr8wal3mkvd" path="res://scenes/shop/shop.tscn" id="14_fv88w"]
 
 [sub_resource type="Curve" id="Curve_olpmc"]
@@ -36,6 +38,13 @@ scale_min = 0.099999994
 scale_max = 0.19999999
 scale_curve = SubResource("CurveTexture_xdvfk")
 color = Color(1, 1, 1, 0.49411765)
+
+[sub_resource type="Resource" id="Resource_t3vx8"]
+resource_local_to_scene = true
+script = ExtResource("8_w4nra")
+name = "Bjorn"
+skin_coordinates = Vector2i(1, 3)
+metadata/_custom_type_script = "uid://ibhkeatocpnu"
 
 [node name="Arena" type="Node2D" unique_id=1291319875]
 script = ExtResource("1_olpmc")
@@ -122,6 +131,7 @@ tile = Vector2i(3, 0)
 
 [node name="Unit" parent="Bench" unique_id=702824173 instance=ExtResource("4_aj7ud")]
 position = Vector2(64, -192)
+stats = SubResource("Resource_t3vx8")
 
 [node name="Unit2" parent="Bench" unique_id=347148219 instance=ExtResource("4_aj7ud")]
 position = Vector2(32, -128)
@@ -130,6 +140,9 @@ stats = ExtResource("7_6w4xk")
 [node name="Unit3" parent="Bench" unique_id=1387256145 instance=ExtResource("4_aj7ud")]
 position = Vector2(96, -128)
 stats = ExtResource("8_2ml6w")
+
+[node name="SellPortal" parent="." unique_id=265665824 instance=ExtResource("12_vmsrg")]
+position = Vector2(80, 288)
 
 [node name="UnitMover" type="Node" parent="." unique_id=2056013724 node_paths=PackedStringArray("play_areas")]
 script = ExtResource("8_ii07k")
@@ -140,8 +153,13 @@ script = ExtResource("11_xgbxb")
 bench = NodePath("../Bench")
 game_area = NodePath("../GameArea")
 
-[node name="SellPortal" parent="." unique_id=265665824 instance=ExtResource("12_vmsrg")]
-position = Vector2(80, 288)
+[node name="UnitCombiner" type="Node" parent="." unique_id=2090144490 node_paths=PackedStringArray("buffer_timer")]
+script = ExtResource("13_fv88w")
+buffer_timer = NodePath("BufferTimer")
+metadata/_custom_type_script = "uid://crmyfndcltos2"
+
+[node name="BufferTimer" type="Timer" parent="UnitCombiner" unique_id=783236551]
+one_shot = true
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=1077427643]
 

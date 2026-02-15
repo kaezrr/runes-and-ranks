@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://0ifus51slw07" path="res://scenes/shop/shop.gd" id="1_ptf86"]
 [ext_resource type="Resource" uid="uid://bkknped6ni3gb" path="res://data/player/player_stats.tres" id="2_ge4d2"]
 [ext_resource type="PackedScene" uid="uid://2hdb6ikcdtwi" path="res://scenes/unit_card/unit_card.tscn" id="2_ptf86"]
+[ext_resource type="Resource" uid="uid://ckrdlyj6wg5y4" path="res://data/unit_pool/unit_pool.tres" id="2_xcdpw"]
 [ext_resource type="PackedScene" uid="uid://ixxtst51a07e" path="res://scenes/shop/xp_button.tscn" id="3_ge4d2"]
 [ext_resource type="PackedScene" uid="uid://lyhdxrj54dqj" path="res://scenes/shop/reroll_button.tscn" id="4_xcdpw"]
 [ext_resource type="PackedScene" uid="uid://bbya6bj8a11e4" path="res://scenes/shop/xp_tracker.tscn" id="5_tp26b"]
@@ -19,6 +20,7 @@ offset_bottom = 353.0
 grow_horizontal = 0
 theme_override_constants/separation = 10
 script = ExtResource("1_ptf86")
+unit_pool = ExtResource("2_xcdpw")
 player_stats = ExtResource("2_ge4d2")
 
 [node name="Top" type="HBoxContainer" parent="." unique_id=1381191672]

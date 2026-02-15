@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://ber3trf277cnv" path="res://scenes/shop/xp_button.gd" id="4_em7wd"]
 [ext_resource type="Resource" uid="uid://bkknped6ni3gb" path="res://data/player/player_stats.tres" id="5_l8f74"]
 [ext_resource type="Texture2D" uid="uid://c4awhqfup7o2k" path="res://assets/sprites/gold.png" id="5_xq16x"]
+[ext_resource type="AudioStream" uid="uid://q4db8jmbfdk7" path="res://assets/sfx/xp_buy.ogg" id="6_ek4as"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_swwis"]
 
@@ -25,6 +26,7 @@ theme_override_styles/hover = ExtResource("3_l8f74")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_swwis")
 script = ExtResource("4_em7wd")
 player_stats = ExtResource("5_l8f74")
+xp_sound = ExtResource("6_ek4as")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=540566447]
 layout_mode = 1

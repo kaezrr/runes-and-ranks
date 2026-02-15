@@ -8,6 +8,7 @@
 [ext_resource type="Resource" uid="uid://bkknped6ni3gb" path="res://data/player/player_stats.tres" id="5_bjucu"]
 [ext_resource type="Texture2D" uid="uid://c4awhqfup7o2k" path="res://assets/sprites/gold.png" id="5_y2w6u"]
 [ext_resource type="Texture2D" uid="uid://b8ht5o2amn6iw" path="res://assets/sprites/refresh.png" id="6_k125t"]
+[ext_resource type="AudioStream" uid="uid://cjrjne6mkcml3" path="res://assets/sfx/reroll.ogg" id="6_o6uy6"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hb6wh"]
 
@@ -26,6 +27,7 @@ theme_override_styles/hover = ExtResource("3_bjucu")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_hb6wh")
 script = ExtResource("4_ar7q0")
 player_stats = ExtResource("5_bjucu")
+reroll_sound = ExtResource("6_o6uy6")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=377351275]
 layout_mode = 1

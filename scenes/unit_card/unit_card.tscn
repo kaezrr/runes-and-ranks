@@ -6,6 +6,7 @@
 [ext_resource type="Resource" uid="uid://bkknped6ni3gb" path="res://data/player/player_stats.tres" id="2_2yriv"]
 [ext_resource type="Texture2D" uid="uid://cx1ivjobggp8n" path="res://assets/sprites/rogues.png" id="3_8ee35"]
 [ext_resource type="Resource" uid="uid://di3y6kakcfkeb" path="res://data/units/arthur.tres" id="3_27mlq"]
+[ext_resource type="AudioStream" uid="uid://05sgyew2ynsi" path="res://assets/sfx/buy.ogg" id="4_27mlq"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_2yriv"]
 line_spacing = 0.0
@@ -41,6 +42,7 @@ focus_mode = 0
 script = ExtResource("1_2ee4v")
 player_stats = ExtResource("2_2yriv")
 unit_stats = ExtResource("3_27mlq")
+buy_sound = ExtResource("4_27mlq")
 
 [node name="BackDrop" type="ColorRect" parent="." unique_id=356285402]
 layout_mode = 1

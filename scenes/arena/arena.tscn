@@ -2,21 +2,19 @@
 
 [ext_resource type="TileSet" uid="uid://datj6xr4ljj4w" path="res://scenes/arena/tileset.tres" id="1_e05a3"]
 [ext_resource type="Script" uid="uid://crcui2h3duuoa" path="res://scenes/arena/arena.gd" id="1_olpmc"]
+[ext_resource type="AudioStream" uid="uid://dwse76yhsgxvm" path="res://assets/music/alexander_ehlers_twists.ogg" id="2_gy0qm"]
 [ext_resource type="Texture2D" uid="uid://mbxv0ayrsu3d" path="res://assets/sprites/star_particle.png" id="2_wl4x5"]
-[ext_resource type="PackedScene" uid="uid://f75omd0gduxn" path="res://scenes/unit/unit.tscn" id="4_aj7ud"]
 [ext_resource type="Script" uid="uid://cyg77enqowh2g" path="res://components/unit_grid.gd" id="4_asdgj"]
 [ext_resource type="Script" uid="uid://c5a1gjagr31c5" path="res://components/play_area.gd" id="4_jx0ua"]
 [ext_resource type="Script" uid="uid://c08v8ppw7i1kx" path="res://components/tile_highlighter.gd" id="6_u52cf"]
-[ext_resource type="Resource" uid="uid://di3y6kakcfkeb" path="res://data/units/arthur.tres" id="7_6w4xk"]
-[ext_resource type="Resource" uid="uid://5todr0m43tgk" path="res://data/units/robin.tres" id="8_2ml6w"]
 [ext_resource type="Script" uid="uid://bn42qh5gwtmyb" path="res://components/unit_mover.gd" id="8_ii07k"]
-[ext_resource type="Script" uid="uid://ibhkeatocpnu" path="res://data/units/unit_stats.gd" id="8_w4nra"]
-[ext_resource type="Script" uid="uid://2thj6nv06jm5" path="res://data/traits/trait.gd" id="9_tp84n"]
 [ext_resource type="Script" uid="uid://cphgqhktrissp" path="res://components/unit_spawner.gd" id="11_xgbxb"]
 [ext_resource type="PackedScene" uid="uid://4jsfsnnm5ba1" path="res://scenes/sell_portal/sell_portal.tscn" id="12_vmsrg"]
 [ext_resource type="Script" uid="uid://crmyfndcltos2" path="res://components/unit_combiner.gd" id="13_fv88w"]
+[ext_resource type="AudioStream" uid="uid://xgrsj3clmat0" path="res://assets/sfx/unit_place.ogg" id="14_fir7s"]
 [ext_resource type="PackedScene" uid="uid://mcr8wal3mkvd" path="res://scenes/shop/shop.tscn" id="14_fv88w"]
 [ext_resource type="PackedScene" uid="uid://bpbw7q1yv714x" path="res://scenes/team_ui/team_size_ui.tscn" id="16_t3vx8"]
+[ext_resource type="AudioStream" uid="uid://dubwbrp3e8hg3" path="res://assets/sfx/combine.ogg" id="16_wqbss"]
 [ext_resource type="Resource" uid="uid://bkknped6ni3gb" path="res://data/player/player_stats.tres" id="17_rhjlh"]
 [ext_resource type="PackedScene" uid="uid://b4uri3a1xrpv1" path="res://scenes/team_ui/traits.tscn" id="19_8kk48"]
 
@@ -43,15 +41,9 @@ scale_max = 0.19999999
 scale_curve = SubResource("CurveTexture_xdvfk")
 color = Color(1, 1, 1, 0.49411765)
 
-[sub_resource type="Resource" id="Resource_wqbss"]
-resource_local_to_scene = true
-script = ExtResource("8_w4nra")
-name = "Bjorn"
-skin_coordinates = Vector2i(1, 3)
-metadata/_custom_type_script = "uid://ibhkeatocpnu"
-
 [node name="Arena" type="Node2D" unique_id=1291319875]
 script = ExtResource("1_olpmc")
+arena_music_stream = ExtResource("2_gy0qm")
 metadata/_edit_lock_ = true
 
 [node name="Visuals" type="Node2D" parent="." unique_id=1789650062]
@@ -133,24 +125,13 @@ play_area = NodePath("..")
 highlight_layer = NodePath("../Highlight")
 tile = Vector2i(3, 0)
 
-[node name="Unit" parent="Bench" unique_id=702824173 instance=ExtResource("4_aj7ud")]
-position = Vector2(64, -192)
-stats = SubResource("Resource_wqbss")
-
-[node name="Unit2" parent="Bench" unique_id=347148219 instance=ExtResource("4_aj7ud")]
-position = Vector2(32, -128)
-stats = ExtResource("7_6w4xk")
-
-[node name="Unit3" parent="Bench" unique_id=1387256145 instance=ExtResource("4_aj7ud")]
-position = Vector2(96, -128)
-stats = ExtResource("8_2ml6w")
-
 [node name="SellPortal" parent="." unique_id=265665824 instance=ExtResource("12_vmsrg")]
 position = Vector2(80, 288)
 
 [node name="UnitMover" type="Node" parent="." unique_id=2056013724 node_paths=PackedStringArray("play_areas")]
 script = ExtResource("8_ii07k")
 play_areas = [NodePath("../GameArea"), NodePath("../Bench")]
+unit_place_sound = ExtResource("14_fir7s")
 
 [node name="UnitSpawner" type="Node" parent="." unique_id=146144262 node_paths=PackedStringArray("bench", "game_area")]
 script = ExtResource("11_xgbxb")
@@ -160,6 +141,7 @@ game_area = NodePath("../GameArea")
 [node name="UnitCombiner" type="Node" parent="." unique_id=2090144490 node_paths=PackedStringArray("buffer_timer")]
 script = ExtResource("13_fv88w")
 buffer_timer = NodePath("BufferTimer")
+combine_sound = ExtResource("16_wqbss")
 metadata/_custom_type_script = "uid://crmyfndcltos2"
 
 [node name="BufferTimer" type="Timer" parent="UnitCombiner" unique_id=783236551]

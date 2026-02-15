@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://cbbvsaahtfwf3"]
+
+[ext_resource type="Script" uid="uid://b6ywlfd6wc708" path="res://scenes/audio_player/audio_player.gd" id="1_pv6mp"]
+
+[node name="MusicPlayer" type="Node" unique_id=300224812]
+script = ExtResource("1_pv6mp")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=2042652969]
+bus = &"Music"
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="." unique_id=561773104]
+bus = &"Music"
+
+[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="." unique_id=244323148]
+bus = &"Music"
+
+[node name="AudioStreamPlayer4" type="AudioStreamPlayer" parent="." unique_id=702806362]
+bus = &"Music"

@@ -59,6 +59,7 @@ offset_right = 31.0
 offset_bottom = -14.0
 theme_override_styles/background = SubResource("StyleBoxFlat_fmv3f")
 theme_override_styles/fill = SubResource("StyleBoxFlat_fvc8g")
+value = 70.0
 show_percentage = false
 
 [node name="ManaBar" type="ProgressBar" parent="." unique_id=1479691727]
@@ -68,6 +69,7 @@ offset_right = 31.0
 offset_bottom = -11.0
 theme_override_styles/background = SubResource("StyleBoxFlat_vh40f")
 theme_override_styles/fill = SubResource("StyleBoxFlat_bhlit")
+value = 30.0
 show_percentage = false
 
 [node name="DragAndDrop" type="Node" parent="." unique_id=1150624599 node_paths=PackedStringArray("target")]

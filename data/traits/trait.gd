@@ -52,3 +52,11 @@ static func get_unique_traits_for_units(units: Array[Unit]) -> Array[Trait]:
 				traits.append(trait_data)
 	
 	return traits
+
+static func get_trait_names(traits: Array[Trait]) -> PackedStringArray:
+	var trait_names: PackedStringArray = []
+	
+	for current_trait in traits:
+		trait_names.append(current_trait.name)
+	
+	return trait_names

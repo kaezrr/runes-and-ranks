@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://ixxtst51a07e" path="res://scenes/shop/xp_button.tscn" id="3_ge4d2"]
 [ext_resource type="PackedScene" uid="uid://lyhdxrj54dqj" path="res://scenes/shop/reroll_button.tscn" id="4_xcdpw"]
 [ext_resource type="PackedScene" uid="uid://bbya6bj8a11e4" path="res://scenes/shop/xp_tracker.tscn" id="5_tp26b"]
+[ext_resource type="Script" uid="uid://bccuq7e2ie6kf" path="res://components/scene_spawner.gd" id="9_tp26b"]
 
 [node name="Shop" type="VBoxContainer" unique_id=785359869]
 anchors_preset = 1
@@ -65,5 +66,10 @@ layout_mode = 2
 [node name="XPTracker" parent="Bottom/RerollAndXPTracker" unique_id=1932900830 instance=ExtResource("5_tp26b")]
 layout_mode = 2
 size_flags_horizontal = 8
+
+[node name="SceneSpawner" type="Node" parent="." unique_id=831139316]
+script = ExtResource("9_tp26b")
+scene = ExtResource("2_ptf86")
+metadata/_custom_type_script = "uid://bccuq7e2ie6kf"
 
 [connection signal="pressed" from="Bottom/RerollAndXPTracker/RerollButton" to="." method="_on_reroll_button_pressed"]

@@ -28,9 +28,9 @@ material = ExtResource("3_3po7s")
 position = Vector2(16, 8)
 texture = ExtResource("1_fmv3f")
 region_enabled = true
-region_rect = Rect2(64, 64, 32, 32)
+region_rect = Rect2(32, 32, 32, 32)
 script = ExtResource("5_7jhsn")
-coordinates = Vector2i(2, 2)
+coordinates = Vector2i(1, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1501529597]
 visible = false

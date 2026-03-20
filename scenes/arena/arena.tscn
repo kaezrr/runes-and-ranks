@@ -18,8 +18,11 @@
 [ext_resource type="PackedScene" uid="uid://mcr8wal3mkvd" path="res://scenes/shop/shop.tscn" id="14_fv88w"]
 [ext_resource type="PackedScene" uid="uid://bpbw7q1yv714x" path="res://scenes/team_ui/team_size_ui.tscn" id="16_t3vx8"]
 [ext_resource type="AudioStream" uid="uid://dubwbrp3e8hg3" path="res://assets/sfx/combine.ogg" id="16_wqbss"]
+[ext_resource type="Script" uid="uid://cmfaetpoja7fs" path="res://custom_nodes/battle_handler.gd" id="17_dh340"]
 [ext_resource type="Resource" uid="uid://bkknped6ni3gb" path="res://data/player/player_stats.tres" id="17_rhjlh"]
+[ext_resource type="PackedScene" uid="uid://b0253vg4x63kt" path="res://scenes/battle_unit/battle_unit.tscn" id="18_l0cts"]
 [ext_resource type="PackedScene" uid="uid://b4uri3a1xrpv1" path="res://scenes/team_ui/traits.tscn" id="19_8kk48"]
+[ext_resource type="PackedScene" uid="uid://c1cycl8adhrjv" path="res://scenes/start_battle_button/start_battle_button.tscn" id="21_fir7s"]
 
 [sub_resource type="Curve" id="Curve_olpmc"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.20083682, 1), 0.0, 0.0, 0, 0, Vector2(0.79916316, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -96,6 +99,10 @@ tile_set = ExtResource("1_e05a3")
 script = ExtResource("4_asdgj")
 size = Vector2i(4, 7)
 
+[node name="BattleUnitGrid" type="Node2D" parent="GameArea" unique_id=938501061]
+script = ExtResource("4_asdgj")
+size = Vector2i(4, 7)
+
 [node name="TileHighlighter" type="Node" parent="GameArea" unique_id=1029316856 node_paths=PackedStringArray("play_area", "highlight_layer")]
 script = ExtResource("6_u52cf")
 enabled = false
@@ -157,16 +164,44 @@ metadata/_custom_type_script = "uid://crmyfndcltos2"
 [node name="BufferTimer" type="Timer" parent="UnitCombiner" unique_id=783236551]
 one_shot = true
 
+[node name="BattleHandler" type="Node" parent="." unique_id=475661026 node_paths=PackedStringArray("game_area", "game_area_unit_grid", "battle_unit_grid")]
+script = ExtResource("17_dh340")
+game_state = ExtResource("12_wqbss")
+game_area = NodePath("../GameArea")
+game_area_unit_grid = NodePath("../GameArea/ArenaUnitGrid")
+battle_unit_grid = NodePath("../GameArea/BattleUnitGrid")
+metadata/_custom_type_script = "uid://cmfaetpoja7fs"
+
+[node name="SceneSpawner" type="Node" parent="BattleHandler" unique_id=2084194968]
+script = ExtResource("12_8kk48")
+scene = ExtResource("18_l0cts")
+metadata/_custom_type_script = "uid://bccuq7e2ie6kf"
+
 [node name="UI" type="CanvasLayer" parent="." unique_id=1077427643]
 
 [node name="Shop" parent="UI" unique_id=785359869 instance=ExtResource("14_fv88w")]
 unique_name_in_owner = true
 
 [node name="TeamSizeUI" parent="UI" unique_id=2055806493 node_paths=PackedStringArray("arena_grid") instance=ExtResource("16_t3vx8")]
+offset_left = -2.0
+offset_right = 44.0
 player_stats = ExtResource("17_rhjlh")
 arena_grid = NodePath("../../GameArea/ArenaUnitGrid")
 
 [node name="Traits" parent="UI" unique_id=344218717 node_paths=PackedStringArray("arena_grid") instance=ExtResource("19_8kk48")]
+arena_grid = NodePath("../../GameArea/ArenaUnitGrid")
+
+[node name="StartBattleButton" parent="UI" unique_id=1616870875 node_paths=PackedStringArray("arena_grid") instance=ExtResource("21_fir7s")]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -37.0
+offset_top = 4.0
+offset_right = -5.0
+offset_bottom = 28.0
+grow_horizontal = 2
+game_state = ExtResource("12_wqbss")
+player_stats = ExtResource("17_rhjlh")
 arena_grid = NodePath("../../GameArea/ArenaUnitGrid")
 
 [connection signal="unit_spawned" from="UnitSpawner" to="." method="_on_unit_spawner_unit_spawned"]

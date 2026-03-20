@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="UnitStats" format=3 uid="uid://duylb4v0smjgd"]
+
+[ext_resource type="Script" uid="uid://ibhkeatocpnu" path="res://data/units/unit_stats.gd" id="1_bncb8"]
+[ext_resource type="Script" uid="uid://2thj6nv06jm5" path="res://data/traits/trait.gd" id="2_m70pa"]
+
+[resource]
+script = ExtResource("1_bncb8")
+team = 1
+metadata/_custom_type_script = "uid://ibhkeatocpnu"

@@ -13,7 +13,7 @@ extends Area2D
 func set_stats(value: UnitStats) -> void:
 	stats = value
 	
-	if not stats or not is_instance_valid(TierIcon):
+	if not stats or not is_instance_valid(tier_icon):
 		return
 		
 	stats = value.duplicate()

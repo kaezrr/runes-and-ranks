@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://c5a1gjagr31c5" path="res://custom_nodes/play_area.gd" id="4_jx0ua"]
 [ext_resource type="Script" uid="uid://c08v8ppw7i1kx" path="res://components/tile_highlighter.gd" id="6_u52cf"]
 [ext_resource type="Script" uid="uid://bn42qh5gwtmyb" path="res://custom_nodes/unit_mover.gd" id="8_ii07k"]
+[ext_resource type="Script" uid="uid://dgbfkuugdg8ry" path="res://custom_nodes/unit_navigation_debug.gd" id="9_l0cts"]
 [ext_resource type="Script" uid="uid://cphgqhktrissp" path="res://custom_nodes/unit_spawner.gd" id="11_xgbxb"]
 [ext_resource type="Script" uid="uid://bccuq7e2ie6kf" path="res://components/scene_spawner.gd" id="12_8kk48"]
 [ext_resource type="PackedScene" uid="uid://4jsfsnnm5ba1" path="res://scenes/sell_portal/sell_portal.tscn" id="12_vmsrg"]
@@ -101,7 +102,7 @@ size = Vector2i(4, 7)
 
 [node name="BattleUnitGrid" type="Node2D" parent="GameArea" unique_id=938501061]
 script = ExtResource("4_asdgj")
-size = Vector2i(4, 7)
+size = Vector2i(10, 7)
 
 [node name="TileHighlighter" type="Node" parent="GameArea" unique_id=1029316856 node_paths=PackedStringArray("play_area", "highlight_layer")]
 script = ExtResource("6_u52cf")
@@ -137,6 +138,14 @@ tile = Vector2i(3, 0)
 
 [node name="SellPortal" parent="." unique_id=265665824 instance=ExtResource("12_vmsrg")]
 position = Vector2(80, 288)
+
+[node name="UnitNavigationDebug" type="Node2D" parent="." unique_id=752527127 node_paths=PackedStringArray("game_area")]
+position = Vector2(160, 32)
+script = ExtResource("9_l0cts")
+color = Color(0.81960785, 0.24313726, 0.4392157, 0.61960787)
+path_colors = Array[Color]([Color(0.18039216, 0.83137256, 0.7647059, 1), Color(0.29411766, 0.0627451, 0.44313726, 1), Color(0.43657625, 0.6989167, 1, 1), Color(0.87355864, 0.47428507, 0.22258407, 1), Color(0.3882353, 0.8392157, 0.21568628, 1)])
+game_area = NodePath("../GameArea")
+metadata/_custom_type_script = "uid://dgbfkuugdg8ry"
 
 [node name="UnitMover" type="Node" parent="." unique_id=2056013724 node_paths=PackedStringArray("play_areas")]
 script = ExtResource("8_ii07k")

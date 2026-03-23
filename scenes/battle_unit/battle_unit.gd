@@ -8,6 +8,7 @@ extends Area2D
 @onready var mana_bar := $ManaBar
 @onready var tier_icon : TierIcon = $TierIcon
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var unit_ai: UnitAI = $UnitAI
 
 
 func set_stats(value: UnitStats) -> void:

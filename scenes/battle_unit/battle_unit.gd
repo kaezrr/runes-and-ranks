@@ -1,7 +1,7 @@
 class_name BattleUnit
 extends Area2D
 
-@export var stats: UnitStats: set = set_stats
+@export var stats: UnitStats: set = _set_stats
 
 @onready var skin : PackedSprite2D = $Skin
 @onready var health_bar := $HealthBar
@@ -11,7 +11,7 @@ extends Area2D
 @onready var unit_ai: UnitAI = $UnitAI
 
 
-func set_stats(value: UnitStats) -> void:
+func _set_stats(value: UnitStats) -> void:
 	stats = value
 	
 	if not stats or not is_instance_valid(tier_icon):

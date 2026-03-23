@@ -1,7 +1,7 @@
 class_name FiniteStateMachine
-extends Node
+extends RefCounted
 
-@export var debug_label: Label
+signal state_changed(new_state: State)
 var state: State
 
 func change_state(new_state: State) -> void:
@@ -9,7 +9,7 @@ func change_state(new_state: State) -> void:
 		state.exit()
 		
 	if new_state:
-		debug_label.text = new_state.get_script().get_global_name()
 		new_state.enter()
 	
 	state = new_state
+	state_changed.emit(state)

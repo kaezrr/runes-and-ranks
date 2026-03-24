@@ -2,14 +2,21 @@
 
 [ext_resource type="Script" uid="uid://dglpyjnska1c8" path="res://scenes/battle_unit/battle_unit.gd" id="1_rmpo8"]
 [ext_resource type="Texture2D" uid="uid://cx1ivjobggp8n" path="res://assets/sprites/rogues.png" id="1_tah2m"]
-[ext_resource type="Resource" uid="uid://5todr0m43tgk" path="res://data/units/robin.tres" id="2_4s270"]
+[ext_resource type="Resource" uid="uid://dy8fux5ugxs8c" path="res://data/units/bjorn.tres" id="2_nmiut"]
 [ext_resource type="Script" uid="uid://bdoopn1dywa5d" path="res://components/packed_sprite2d.gd" id="2_rmpo8"]
 [ext_resource type="PackedScene" uid="uid://cc74qxoal6mlm" path="res://scenes/health_bar/health_bar.tscn" id="3_4s270"]
 [ext_resource type="PackedScene" uid="uid://cb0bv27e3kf2k" path="res://scenes/mana_bar/mana_bar.tscn" id="4_u0yfu"]
+[ext_resource type="Script" uid="uid://c7rj8tcjubces" path="res://components/hurtbox.gd" id="5_1myfu"]
 [ext_resource type="PackedScene" uid="uid://b2wqkhfnx4hsw" path="res://scenes/unit/tier_icon.tscn" id="5_hf5vq"]
+[ext_resource type="Script" uid="uid://1y5yuhgnrfy4" path="res://components/detect_range.gd" id="5_nmiut"]
+[ext_resource type="Script" uid="uid://baquklf1e4h37" path="res://scenes/mana_bar/mana_bar.gd" id="7_hf5vq"]
 [ext_resource type="Script" uid="uid://i70oj0t04m4s" path="res://scenes/battle_unit/ai/unit_ai.gd" id="9_hf5vq"]
+[ext_resource type="Script" uid="uid://csu3dy5lxd1ya" path="res://custom_nodes/target_finder.gd" id="11_euuyt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1myfu"]
+size = Vector2(36, 36)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nmiut"]
 size = Vector2(36, 36)
 
 [sub_resource type="Animation" id="Animation_tah2m"]
@@ -177,8 +184,10 @@ _data = {
 }
 
 [node name="BattleUnit" type="Area2D" unique_id=1770433224]
+collision_layer = 0
+collision_mask = 0
 script = ExtResource("1_rmpo8")
-stats = ExtResource("2_4s270")
+stats = ExtResource("2_nmiut")
 
 [node name="Skin" type="Sprite2D" parent="." unique_id=1833671075]
 texture = ExtResource("1_tah2m")
@@ -191,17 +200,37 @@ metadata/_custom_type_script = "uid://bdoopn1dywa5d"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1539503397]
 shape = SubResource("RectangleShape2D_1myfu")
 
+[node name="DetectRange" type="Area2D" parent="." unique_id=1906477285 node_paths=PackedStringArray("col_shape")]
+script = ExtResource("5_nmiut")
+col_shape = NodePath("CollisionShape2D")
+base_range_size = 36.0
+metadata/_custom_type_script = "uid://1y5yuhgnrfy4"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectRange" unique_id=921497015]
+debug_color = Color(0.69631267, 0.0023713058, 0.91115403, 0.41960785)
+
+[node name="HurtBox" type="Area2D" parent="." unique_id=118902321]
+script = ExtResource("5_1myfu")
+metadata/_custom_type_script = "uid://c7rj8tcjubces"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=1017394047]
+shape = SubResource("RectangleShape2D_nmiut")
+debug_color = Color(0.98000115, 0, 0.36526778, 0.41960785)
+
 [node name="HealthBar" parent="." unique_id=174065587 instance=ExtResource("3_4s270")]
 offset_left = -14.0
 offset_top = -29.0
 offset_right = 16.0
 offset_bottom = -23.0
+metadata/_edit_use_anchors_ = true
 
 [node name="ManaBar" parent="." unique_id=191743844 instance=ExtResource("4_u0yfu")]
 offset_left = -14.0
 offset_top = -23.0
 offset_right = 16.0
 offset_bottom = -19.0
+script = ExtResource("7_hf5vq")
+metadata/_edit_use_anchors_ = true
 
 [node name="TierIcon" parent="." unique_id=2109152366 instance=ExtResource("5_hf5vq")]
 z_index = 1
@@ -209,9 +238,7 @@ offset_left = -16.0
 offset_top = -21.0
 offset_right = -6.0
 offset_bottom = -11.0
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=776081446]
-libraries/ = SubResource("AnimationLibrary_1myfu")
+metadata/_edit_use_anchors_ = true
 
 [node name="FSMDebugLabel" type="Label" parent="." unique_id=795114991]
 offset_left = -65.0
@@ -219,9 +246,18 @@ offset_top = -47.0
 offset_right = 65.0
 offset_bottom = -29.0
 horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="TargetFinder" type="Node" parent="." unique_id=690147829 node_paths=PackedStringArray("actor")]
+script = ExtResource("11_euuyt")
+actor = NodePath("..")
+metadata/_custom_type_script = "uid://csu3dy5lxd1ya"
 
 [node name="UnitAI" type="Node" parent="." unique_id=800670290 node_paths=PackedStringArray("debug_label", "actor")]
 script = ExtResource("9_hf5vq")
 debug_label = NodePath("../FSMDebugLabel")
 actor = NodePath("..")
 metadata/_custom_type_script = "uid://i70oj0t04m4s"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=776081446]
+libraries/ = SubResource("AnimationLibrary_1myfu")

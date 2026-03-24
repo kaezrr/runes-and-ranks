@@ -12,4 +12,5 @@ rarity = 2
 gold_cost = 4
 traits = Array[ExtResource("2_0x1t0")]([ExtResource("3_vyn1g"), ExtResource("4_g8o77")])
 skin_coordinates = Vector2i(4, 2)
+attack_range = 1
 metadata/_custom_type_script = "uid://ibhkeatocpnu"

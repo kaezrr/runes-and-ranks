@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://dh71f8lbamfh3"]
+
+[ext_resource type="Script" uid="uid://u5q8rnpd4h3p" path="res://scenes/test/target_finder_test.gd" id="1_eceuw"]
+[ext_resource type="PackedScene" uid="uid://b0253vg4x63kt" path="res://scenes/battle_unit/battle_unit.tscn" id="2_skbrp"]
+[ext_resource type="Resource" uid="uid://duylb4v0smjgd" path="res://data/enemies/zombie.tres" id="3_a3p3d"]
+[ext_resource type="Script" uid="uid://dfmvnokes7tbi" path="res://components/drag_and_drop.gd" id="4_vsj2o"]
+[ext_resource type="Resource" uid="uid://5todr0m43tgk" path="res://data/units/robin.tres" id="5_ol44v"]
+
+[node name="TargetFinderTest" type="Node2D" unique_id=151157181]
+script = ExtResource("1_eceuw")
+
+[node name="BattleUnit" parent="." unique_id=1770433224 groups=["enemy_units"] instance=ExtResource("2_skbrp")]
+position = Vector2(466, 111)
+stats = ExtResource("3_a3p3d")
+
+[node name="BattleUnit2" parent="." unique_id=1943884524 groups=["enemy_units"] instance=ExtResource("2_skbrp")]
+position = Vector2(507, 267)
+stats = ExtResource("3_a3p3d")
+
+[node name="BattleUnit3" parent="." unique_id=357495 groups=["player_units"] instance=ExtResource("2_skbrp")]
+position = Vector2(156, 259)
+
+[node name="DragAndDrop" type="Node" parent="BattleUnit3" unique_id=544487469 node_paths=PackedStringArray("target")]
+script = ExtResource("4_vsj2o")
+target = NodePath("..")
+metadata/_custom_type_script = "uid://dfmvnokes7tbi"
+
+[node name="BattleUnit4" parent="." unique_id=979750971 groups=["player_units"] instance=ExtResource("2_skbrp")]
+position = Vector2(150, 109)
+stats = ExtResource("5_ol44v")
+
+[node name="DragAndDrop" type="Node" parent="BattleUnit4" unique_id=1494187263 node_paths=PackedStringArray("target")]
+script = ExtResource("4_vsj2o")
+target = NodePath("..")
+metadata/_custom_type_script = "uid://dfmvnokes7tbi"

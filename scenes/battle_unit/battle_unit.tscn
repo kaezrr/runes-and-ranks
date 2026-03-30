@@ -278,6 +278,18 @@ metadata/_custom_type_script = "uid://b7mql3vwkq87r"
 script = ExtResource("13_bi2u5")
 metadata/_custom_type_script = "uid://bccuq7e2ie6kf"
 
+[node name="RangedAttack" type="Node" parent="." unique_id=1028811912 node_paths=PackedStringArray("parent", "anchor", "spawn_point", "spawner")]
+script = ExtResource("12_w8xno")
+parent = NodePath("..")
+anchor = NodePath("../AttackAnchor")
+spawn_point = NodePath("../AttackAnchor/AttackMarker")
+spawner = NodePath("ProjectileSpawner")
+metadata/_custom_type_script = "uid://b7mql3vwkq87r"
+
+[node name="ProjectileSpawner" type="Node" parent="RangedAttack" unique_id=46238433]
+script = ExtResource("13_bi2u5")
+metadata/_custom_type_script = "uid://bccuq7e2ie6kf"
+
 [node name="TargetFinder" type="Node" parent="." unique_id=690147829 node_paths=PackedStringArray("actor")]
 script = ExtResource("11_euuyt")
 actor = NodePath("..")

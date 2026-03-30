@@ -1,0 +1,70 @@
+[gd_scene format=3 uid="uid://dn3xgcfcf1tsd"]
+
+[ext_resource type="Script" uid="uid://buo43758l1r1d" path="res://components/projectile.gd" id="1_axj3s"]
+[ext_resource type="Texture2D" uid="uid://wsnev6w61yh" path="res://assets/sprites/effects_projectiles/arrow.png" id="2_g5syl"]
+[ext_resource type="Script" uid="uid://bn6xbueeel36u" path="res://components/hitbox.gd" id="2_yanr4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r6pym"]
+size = Vector2(20, 10)
+
+[sub_resource type="Animation" id="Animation_30tqf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_beons"]
+resource_name = "flying"
+length = 0.9
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 7]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_iu4sq"]
+_data = {
+&"RESET": SubResource("Animation_30tqf"),
+&"flying": SubResource("Animation_beons")
+}
+
+[node name="RobinArrow" type="Node2D" unique_id=1009853634]
+script = ExtResource("1_axj3s")
+speed = 300
+metadata/_custom_type_script = "uid://buo43758l1r1d"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=828726077]
+texture = ExtResource("2_g5syl")
+hframes = 8
+
+[node name="HitBox" type="Area2D" parent="." unique_id=2259218]
+script = ExtResource("2_yanr4")
+metadata/_custom_type_script = "uid://bn6xbueeel36u"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=1976305674]
+visible = false
+shape = SubResource("RectangleShape2D_r6pym")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1917876328]
+visible = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1567096339]
+libraries/ = SubResource("AnimationLibrary_iu4sq")
+autoplay = &"flying"

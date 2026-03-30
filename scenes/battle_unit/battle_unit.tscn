@@ -12,6 +12,9 @@
 [ext_resource type="Script" uid="uid://baquklf1e4h37" path="res://scenes/mana_bar/mana_bar.gd" id="7_hf5vq"]
 [ext_resource type="Script" uid="uid://i70oj0t04m4s" path="res://scenes/battle_unit/ai/unit_ai.gd" id="9_hf5vq"]
 [ext_resource type="Script" uid="uid://csu3dy5lxd1ya" path="res://custom_nodes/target_finder.gd" id="11_euuyt"]
+[ext_resource type="Script" uid="uid://dxdtcwfjwopxf" path="res://components/flip_sprite.gd" id="11_gou7k"]
+[ext_resource type="Script" uid="uid://b7mql3vwkq87r" path="res://components/attack.gd" id="12_w8xno"]
+[ext_resource type="Script" uid="uid://bccuq7e2ie6kf" path="res://components/scene_spawner.gd" id="13_bi2u5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1myfu"]
 size = Vector2(36, 36)
@@ -217,6 +220,13 @@ metadata/_custom_type_script = "uid://c7rj8tcjubces"
 shape = SubResource("RectangleShape2D_nmiut")
 debug_color = Color(0.98000115, 0, 0.36526778, 0.41960785)
 
+[node name="AttackAnchor" type="Node2D" parent="." unique_id=1093928569]
+rotation = 0.15753211
+
+[node name="AttackMarker" type="Marker2D" parent="AttackAnchor" unique_id=1075501491]
+position = Vector2(14.972284, -0.9114213)
+rotation = 4.670402
+
 [node name="HealthBar" parent="." unique_id=174065587 instance=ExtResource("3_4s270")]
 offset_left = -14.0
 offset_top = -29.0
@@ -247,6 +257,26 @@ offset_right = 65.0
 offset_bottom = -29.0
 horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
+
+[node name="AttackTimer" type="Timer" parent="." unique_id=1677102936]
+process_callback = 0
+
+[node name="FlipSprite" type="Node" parent="." unique_id=1792081666 node_paths=PackedStringArray("sprite")]
+script = ExtResource("11_gou7k")
+sprite = NodePath("../Skin")
+metadata/_custom_type_script = "uid://dxdtcwfjwopxf"
+
+[node name="MeleeAtack" type="Node" parent="." unique_id=1274078198 node_paths=PackedStringArray("parent", "anchor", "spawn_point", "spawner")]
+script = ExtResource("12_w8xno")
+parent = NodePath("..")
+anchor = NodePath("../AttackAnchor")
+spawn_point = NodePath("../AttackAnchor/AttackMarker")
+spawner = NodePath("MeleeSceneSpawner")
+metadata/_custom_type_script = "uid://b7mql3vwkq87r"
+
+[node name="MeleeSceneSpawner" type="Node" parent="MeleeAtack" unique_id=350061664]
+script = ExtResource("13_bi2u5")
+metadata/_custom_type_script = "uid://bccuq7e2ie6kf"
 
 [node name="TargetFinder" type="Node" parent="." unique_id=690147829 node_paths=PackedStringArray("actor")]
 script = ExtResource("11_euuyt")

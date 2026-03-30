@@ -8,6 +8,7 @@ extends Area2D
 @onready var outline_highlighter: OutlineHighlighter = $OutlineHighlighter
 @onready var gold: HBoxContainer = %Gold
 @onready var gold_label: Label = %GoldLabel
+@onready var flip_sprite: FlipSprite = $FlipSprite
 
 var current_unit: Unit
 
@@ -16,6 +17,12 @@ func _ready() -> void:
 	for unit: Unit in units:
 		setup_unit(unit)
 		
+func _process(_delta: float) -> void:
+	if not current_unit:
+		return
+		
+	flip_sprite.flip_sprite_towards(current_unit.global_position)
+
 func setup_unit(unit: Unit) -> void:
 	unit.drag_and_drop.dropped.connect(_on_unit_dropped.bind(unit))
 	unit.quick_sell_pressed.connect(_sell_unit.bind(unit))

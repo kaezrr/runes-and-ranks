@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://wsjijo1e6udy" path="res://components/outline_highlighter.gd" id="3_q37ab"]
 [ext_resource type="AudioStream" uid="uid://p1b7rsqtf0cc" path="res://assets/sfx/sell.ogg" id="4_6kxgn"]
 [ext_resource type="Texture2D" uid="uid://c4awhqfup7o2k" path="res://assets/sprites/gold.png" id="4_se251"]
+[ext_resource type="Script" uid="uid://dxdtcwfjwopxf" path="res://components/flip_sprite.gd" id="9_o1cao"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gmlex"]
 radius = 24.0
@@ -70,6 +71,11 @@ layout_mode = 2
 texture = ExtResource("4_se251")
 expand_mode = 1
 stretch_mode = 5
+
+[node name="FlipSprite" type="Node" parent="." unique_id=979634450 node_paths=PackedStringArray("sprite")]
+script = ExtResource("9_o1cao")
+sprite = NodePath("../Visuals/Sprite2D")
+metadata/_custom_type_script = "uid://dxdtcwfjwopxf"
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="area_exited" from="." to="." method="_on_area_exited"]

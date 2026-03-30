@@ -26,16 +26,7 @@ var enemy_target : BattleUnit
 var player_target: BattleUnit
 
 func _ready() -> void:
-	game_state.changed.connect(_on_game_state_changed)
-	
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("test1"):
-		var ai_unit := get_tree().get_nodes_in_group("player_units")[0] as BattleUnit
-		ai_unit.unit_ai.enabled = true
-	if event.is_action_pressed("test2"):
-		var ai_unit := get_tree().get_nodes_in_group("player_units")[1] as BattleUnit
-		ai_unit.unit_ai.enabled = true
-		
+	game_state.changed.connect(_on_game_state_changed)		
 		
 	
 func _setup_battle_unit(unit_coord: Vector2i, new_unit: BattleUnit) -> void:
@@ -68,11 +59,12 @@ func _prepare_fight() -> void:
 		new_unit.stats.team = UnitStats.Team.ENEMY
 		_setup_battle_unit(unit_coord,new_unit)
 		
-	player_test = get_tree().get_nodes_in_group("player_units")[1]
-	enemy_test = get_tree().get_nodes_in_group("enemy_units")[1]
-	player_target = get_tree().get_nodes_in_group("enemy_units").pick_random()
-	enemy_target = get_tree().get_nodes_in_group("player_units").pick_random()
-
+	UnitNavigation.update_occupied_tiles()
+	var battle_units := get_tree().get_nodes_in_group("player_units") + get_tree().get_nodes_in_group("enemy_units")
+	battle_units.shuffle()
+	
+	for battle_unit: BattleUnit in battle_units:
+		battle_unit.unit_ai.enabled = true
 	
 func _on_game_state_changed() -> void:
 	match game_state.current_phase:

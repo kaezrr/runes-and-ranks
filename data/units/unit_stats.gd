@@ -78,6 +78,12 @@ func get_max_health() -> int:
 func get_attack_damage() -> int:
 	return attack_damage[tier -1]
 	
+func get_team_collision_layer()-> int:
+	return team + 1
+	
+func get_team_collision_mask()-> int:
+	return 2 - team
+	
 func get_time_between_attacks() -> float:
 	return 1/attack_speed
 	

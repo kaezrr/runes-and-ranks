@@ -37,8 +37,8 @@ func _attack() -> void:
 	if actor_unit.stats.is_melee():
 		var hitbox := actor_unit.melee_atack.attack(target.global_position) as HitBox
 		hitbox.damage = actor_unit.stats.get_attack_damage()
-		hitbox.collision_layer = actor_unit.stats.team+1
-		hitbox.collision_mask = 2 - actor_unit.stats.team
+		hitbox.collision_layer = actor_unit.stats.get_team_collision_layer()
+		hitbox.collision_mask = actor_unit.stats.get_team_collision_mask()
 		actor_unit.animation_player.animation_finished.connect(_on_attack_hit.unbind(1), CONNECT_ONE_SHOT)
 		
 	else:

@@ -26,9 +26,9 @@ func _set_stats(value: UnitStats) -> void:
 		return
 		
 	stats = value.duplicate()
-	collision_layer = stats.team + 1
-	hurt_box.collision_layer = stats.team + 1
-	hurt_box.collision_mask = 2 - stats.team
+	collision_layer = stats.get_team_collision_layer()
+	hurt_box.collision_layer = stats.get_team_collision_layer()
+	hurt_box.collision_mask = stats.get_team_collision_mask()
 	
 	skin.texture = UnitStats.TEAM_SPRITESHEET[stats.team]
 	skin.coordinates = stats.skin_coordinates

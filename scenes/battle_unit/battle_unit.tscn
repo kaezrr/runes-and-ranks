@@ -251,6 +251,7 @@ offset_bottom = -11.0
 metadata/_edit_use_anchors_ = true
 
 [node name="FSMDebugLabel" type="Label" parent="." unique_id=795114991]
+visible = false
 offset_left = -65.0
 offset_top = -47.0
 offset_right = 65.0

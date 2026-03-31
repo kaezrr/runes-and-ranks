@@ -1,0 +1,177 @@
+[gd_scene format=3 uid="uid://d3qx3cbk1omcm"]
+
+[ext_resource type="Script" uid="uid://bv3bob4yfdfmi" path="res://scenes/_abilities/bjorn_swing.gd" id="1_ku4gm"]
+[ext_resource type="AudioStream" uid="uid://omaponbuj0gx" path="res://assets/sfx/bjorn_spell.ogg" id="2_vciki"]
+[ext_resource type="Texture2D" uid="uid://dxcdu20yfc72" path="res://assets/sprites/items.png" id="2_xxd1s"]
+[ext_resource type="Texture2D" uid="uid://pqbmrlxdbamv" path="res://assets/sprites/effects_projectiles/bjorn_cast_smear.png" id="3_vciki"]
+[ext_resource type="Script" uid="uid://bn6xbueeel36u" path="res://components/hitbox.gd" id="4_nc6hy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8l5um"]
+size = Vector2(9, 20)
+
+[sub_resource type="Animation" id="Animation_a0ddn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Smear:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Smear:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("HitBox/CollisionShape2D:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_3drqg"]
+resource_name = "swing"
+length = 0.65
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.55, 0.65),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.9, 0.9), Vector2(1.1, 1.1), Vector2(1.1, 1.1), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.65),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, -0.2617994, 6.2831855]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Smear:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.55),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Smear:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [1, 0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("HitBox/CollisionShape2D:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.55),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_l3b1k"]
+_data = {
+&"RESET": SubResource("Animation_a0ddn"),
+&"swing": SubResource("Animation_3drqg")
+}
+
+[node name="BjornSwing" type="Node2D" unique_id=82505935]
+script = ExtResource("1_ku4gm")
+base_damage_per_tier = Array[int]([5, 8, 10])
+sound = ExtResource("2_vciki")
+metadata/_custom_type_script = "uid://bftxj8nyyu8q4"
+
+[node name="Weapon" type="Sprite2D" parent="." unique_id=326712375]
+position = Vector2(-32, -32)
+texture = ExtResource("2_xxd1s")
+region_enabled = true
+region_rect = Rect2(96, 160, 32, 32)
+
+[node name="Smear" type="Sprite2D" parent="." unique_id=1654016065]
+visible = false
+modulate = Color(1, 1, 1, 0.78431374)
+position = Vector2(-32, -32)
+texture = ExtResource("3_vciki")
+hframes = 2
+frame = 1
+
+[node name="HitBox" type="Area2D" parent="." unique_id=558342099]
+position = Vector2(-34, -32)
+script = ExtResource("4_nc6hy")
+metadata/_custom_type_script = "uid://bn6xbueeel36u"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=1220936619]
+rotation = -0.7853982
+shape = SubResource("RectangleShape2D_8l5um")
+disabled = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1802240773]
+libraries/ = SubResource("AnimationLibrary_l3b1k")

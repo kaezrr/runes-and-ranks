@@ -1,16 +1,16 @@
-[gd_scene format=3 uid="uid://mcr8wal3mkvd"]
+[gd_scene load_steps=10 format=3 uid="uid://8gnysrx0alpt"]
 
-[ext_resource type="PackedScene" uid="uid://duyn7xubtvl1t" path="res://scenes/shop/gold_label.tscn" id="1_ctpgp"]
-[ext_resource type="Script" uid="uid://0ifus51slw07" path="res://scenes/shop/shop.gd" id="1_ptf86"]
-[ext_resource type="Resource" uid="uid://bkknped6ni3gb" path="res://data/player/player_stats.tres" id="2_ge4d2"]
-[ext_resource type="PackedScene" uid="uid://2hdb6ikcdtwi" path="res://scenes/unit_card/unit_card.tscn" id="2_ptf86"]
-[ext_resource type="Resource" uid="uid://ckrdlyj6wg5y4" path="res://data/unit_pool/unit_pool.tres" id="2_xcdpw"]
-[ext_resource type="PackedScene" uid="uid://ixxtst51a07e" path="res://scenes/shop/xp_button.tscn" id="3_ge4d2"]
-[ext_resource type="PackedScene" uid="uid://lyhdxrj54dqj" path="res://scenes/shop/reroll_button.tscn" id="4_xcdpw"]
-[ext_resource type="PackedScene" uid="uid://bbya6bj8a11e4" path="res://scenes/shop/xp_tracker.tscn" id="5_tp26b"]
-[ext_resource type="Script" uid="uid://bccuq7e2ie6kf" path="res://components/scene_spawner.gd" id="9_tp26b"]
+[ext_resource type="PackedScene" uid="uid://lfdpar3i1ke5" path="res://scenes/gold_display/gold_display.tscn" id="1_8yyve"]
+[ext_resource type="Script" uid="uid://c2pkgl3xve2bj" path="res://scenes/shop/shop.gd" id="1_i45a5"]
+[ext_resource type="Resource" uid="uid://cond60csmn6l4" path="res://data/player/player_stats.tres" id="2_4i07k"]
+[ext_resource type="Resource" uid="uid://cyvvk24s43f0u" path="res://data/unit_pool/unit_pool.tres" id="2_b8gsu"]
+[ext_resource type="PackedScene" uid="uid://vdsh8er0jfuo" path="res://scenes/unit_card/unit_card.tscn" id="2_k132j"]
+[ext_resource type="PackedScene" uid="uid://cwttodcy78nwf" path="res://scenes/xp_button/xp_button.tscn" id="3_ldo6j"]
+[ext_resource type="PackedScene" uid="uid://cqudsyk36crsy" path="res://scenes/reroll_button/reroll_button.tscn" id="4_dv3b5"]
+[ext_resource type="PackedScene" uid="uid://bvx14fe4jsna5" path="res://scenes/xp_tracker/xp_tracker.tscn" id="5_1ustg"]
+[ext_resource type="Script" uid="uid://br017kbxir65y" path="res://components/scene_spawner.gd" id="9_tp26b"]
 
-[node name="Shop" type="VBoxContainer" unique_id=785359869]
+[node name="Shop" type="VBoxContainer"]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -20,56 +20,56 @@ offset_right = -8.0
 offset_bottom = 353.0
 grow_horizontal = 0
 theme_override_constants/separation = 10
-script = ExtResource("1_ptf86")
-unit_pool = ExtResource("2_xcdpw")
-player_stats = ExtResource("2_ge4d2")
+script = ExtResource("1_i45a5")
+unit_pool = ExtResource("2_b8gsu")
+player_stats = ExtResource("2_4i07k")
 
-[node name="Top" type="HBoxContainer" parent="." unique_id=1381191672]
+[node name="Top" type="HBoxContainer" parent="."]
 layout_mode = 2
 
-[node name="GoldLabel" parent="Top" unique_id=1126845881 instance=ExtResource("1_ctpgp")]
+[node name="GoldDisplay" parent="Top" instance=ExtResource("1_8yyve")]
 layout_mode = 2
 
-[node name="ShopCards" type="VBoxContainer" parent="Top" unique_id=1749226252]
+[node name="ShopCards" type="VBoxContainer" parent="Top"]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="UnitCard" parent="Top/ShopCards" unique_id=1813936211 instance=ExtResource("2_ptf86")]
+[node name="UnitCard" parent="Top/ShopCards" instance=ExtResource("2_k132j")]
 layout_mode = 2
 
-[node name="UnitCard2" parent="Top/ShopCards" unique_id=1767440682 instance=ExtResource("2_ptf86")]
+[node name="UnitCard2" parent="Top/ShopCards" instance=ExtResource("2_k132j")]
 layout_mode = 2
 
-[node name="UnitCard3" parent="Top/ShopCards" unique_id=644637237 instance=ExtResource("2_ptf86")]
+[node name="UnitCard3" parent="Top/ShopCards" instance=ExtResource("2_k132j")]
 layout_mode = 2
 
-[node name="UnitCard4" parent="Top/ShopCards" unique_id=1406076473 instance=ExtResource("2_ptf86")]
+[node name="UnitCard4" parent="Top/ShopCards" instance=ExtResource("2_k132j")]
 layout_mode = 2
 
-[node name="UnitCard5" parent="Top/ShopCards" unique_id=1754615059 instance=ExtResource("2_ptf86")]
+[node name="UnitCard5" parent="Top/ShopCards" instance=ExtResource("2_k132j")]
 layout_mode = 2
 
-[node name="Bottom" type="HBoxContainer" parent="." unique_id=636080486]
+[node name="Bottom" type="HBoxContainer" parent="."]
 layout_mode = 2
 
-[node name="XPButton" parent="Bottom" unique_id=1330862669 instance=ExtResource("3_ge4d2")]
+[node name="XPButton" parent="Bottom" instance=ExtResource("3_ldo6j")]
 layout_mode = 2
 size_flags_vertical = 8
 
-[node name="RerollAndXPTracker" type="VBoxContainer" parent="Bottom" unique_id=1783943838]
+[node name="RerollAndXPTracker" type="VBoxContainer" parent="Bottom"]
 layout_mode = 2
 theme_override_constants/separation = 7
 
-[node name="RerollButton" parent="Bottom/RerollAndXPTracker" unique_id=640329745 instance=ExtResource("4_xcdpw")]
+[node name="RerollButton" parent="Bottom/RerollAndXPTracker" instance=ExtResource("4_dv3b5")]
 layout_mode = 2
 
-[node name="XPTracker" parent="Bottom/RerollAndXPTracker" unique_id=1932900830 instance=ExtResource("5_tp26b")]
+[node name="XPTracker" parent="Bottom/RerollAndXPTracker" instance=ExtResource("5_1ustg")]
 layout_mode = 2
 size_flags_horizontal = 8
 
-[node name="SceneSpawner" type="Node" parent="." unique_id=831139316]
+[node name="SceneSpawner" type="Node" parent="."]
 script = ExtResource("9_tp26b")
-scene = ExtResource("2_ptf86")
-metadata/_custom_type_script = "uid://bccuq7e2ie6kf"
+scene = ExtResource("2_k132j")
+metadata/_custom_type_script = "uid://br017kbxir65y"
 
 [connection signal="pressed" from="Bottom/RerollAndXPTracker/RerollButton" to="." method="_on_reroll_button_pressed"]

@@ -13,10 +13,11 @@ var angle: float
 var progress: float
 var time_elapsed := 0.0
 
+
 func _physics_process(delta: float) -> void:
 	if not enabled or not target:
 		return
-		
+	
 	velocity = target.global_position - last_position
 	last_position = target.global_position
 	progress = time_elapsed / lerp_seconds
@@ -25,12 +26,13 @@ func _physics_process(delta: float) -> void:
 		angle = velocity.normalized().x * deg_to_rad(max_rotation_degrees)
 	else:
 		angle = 0.0
-		
+	
 	target.rotation = lerp_angle(target.rotation, angle, progress)
 	time_elapsed += delta
 	
 	if progress > 1.0:
 		time_elapsed = 0.0
+
 
 func _set_enabled(value: bool) -> void:
 	enabled = value

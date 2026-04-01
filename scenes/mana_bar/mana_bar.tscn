@@ -1,23 +1,25 @@
-[gd_scene format=3 uid="uid://cb0bv27e3kf2k"]
+[gd_scene load_steps=4 format=3 uid="uid://c7pf7qph33dgb"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vh40f"]
-bg_color = Color(0.23137255, 0.11372549, 0.09803922, 1)
+[ext_resource type="Script" uid="uid://bm1vd2enois0d" path="res://scenes/mana_bar/mana_bar.gd" id="1_x6g12"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bhlit"]
-bg_color = Color(0, 0.654902, 0.9372549, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hcypn"]
+bg_color = Color(0.231373, 0.113725, 0.0980392, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v3q28"]
+bg_color = Color(0, 0.654902, 0.937255, 1)
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
-border_color = Color(0.23137255, 0.11372549, 0.09803922, 1)
+border_color = Color(0.231373, 0.113725, 0.0980392, 1)
 
-[node name="ManaBar" type="ProgressBar" unique_id=191743844]
+[node name="ManaBar" type="ProgressBar"]
 z_index = 1
 offset_left = 1.0
 offset_top = -15.0
 offset_right = 31.0
 offset_bottom = -11.0
-theme_override_styles/background = SubResource("StyleBoxFlat_vh40f")
-theme_override_styles/fill = SubResource("StyleBoxFlat_bhlit")
-value = 30.0
+theme_override_styles/background = SubResource("StyleBoxFlat_hcypn")
+theme_override_styles/fill = SubResource("StyleBoxFlat_v3q28")
 show_percentage = false
+script = ExtResource("1_x6g12")

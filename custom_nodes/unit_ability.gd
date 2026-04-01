@@ -9,7 +9,7 @@ signal ability_cast_finished
 
 func _ready() -> void:
 	add_to_group("unit_abilities")
-	
+
 
 func use() -> void:
 	SFXPlayer.play(sound)

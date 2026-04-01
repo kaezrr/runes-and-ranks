@@ -9,26 +9,31 @@ signal unit_spawned(unit: Unit)
 
 @onready var unit_scene_spawner: SceneSpawner = $SceneSpawner
 
+
 func _get_first_available_area() -> PlayArea:
-	var game_area_full = game_area.unit_grid.is_grid_full();
-	var bench_full = bench.unit_grid.is_grid_full();
+	var bench_full := bench.unit_grid.is_grid_full()
+	var game_area_full := game_area.unit_grid.is_grid_full()
 	
-	if not bench_full :
+	if not bench_full:
 		return bench
 	elif not game_area_full and not game_state.is_battling():
 		return game_area
-		
+	
 	return null
+
 
 func spawn_unit(unit: UnitStats) -> void:
 	var area := _get_first_available_area()
-	assert(area, "No available space to add unit to!")
 	
-	var new_unit :=  unit_scene_spawner.spawn_scene(area.unit_grid) as Unit
+	if not area:
+		TooltipHandler.show_timed_popup("No available space for units!", 2.0)
+		return
+	
+	var new_unit := unit_scene_spawner.spawn_scene(area.unit_grid) as Unit
 	var tile := area.unit_grid.get_first_empty_tile()
 	area.unit_grid.add_unit(tile, new_unit)
 	new_unit.global_position = area.get_global_from_tile(tile) - Arena.HALF_CELL_SIZE
-	
 	new_unit.stats = unit
+	new_unit.stats.reset_health()
+	new_unit.stats.reset_mana()
 	unit_spawned.emit(new_unit)
-	

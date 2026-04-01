@@ -5,7 +5,8 @@
 class_name _CLASS_
 extends UnitAbility
 
+
 func use() -> void:
 	print("use this member var to access the casting BattleUnit: %s" % caster)
-	SFXPlayer.play(sound)
-	ability_cast_finished.emit()
+	SFXPlayer.play(sound) # Use this export variable for a sound effect.
+	ability_cast_finished.emit() # Emit this signal, when the ability cast has been finished.

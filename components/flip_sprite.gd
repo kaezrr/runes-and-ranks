@@ -3,6 +3,7 @@ extends Node
 
 @export var sprite: Sprite2D
 
+
 func flip_sprite_towards(other_position: Vector2) -> void:
 	var new_dir: Vector2 = sprite.global_position.direction_to(other_position)
 	

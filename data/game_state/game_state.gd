@@ -1,8 +1,8 @@
 class_name GameState
 extends Resource
 
-enum Phase{
-	PREPARATION,
+enum Phase {
+	PREPARATION, 
 	BATTLE
 }
 
@@ -11,6 +11,6 @@ enum Phase{
 		current_phase = value
 		changed.emit()
 
-func is_battling() -> bool:
+
+func is_battling() -> bool: 
 	return current_phase == Phase.BATTLE
-	

@@ -1,19 +1,19 @@
-[gd_resource type="Resource" script_class="UnitStats" format=3 uid="uid://dy8fux5ugxs8c"]
+[gd_resource type="Resource" script_class="UnitStats" load_steps=12 format=3 uid="uid://dyqvoxv3vg6hp"]
 
-[ext_resource type="Script" uid="uid://ibhkeatocpnu" path="res://data/units/unit_stats.gd" id="1_d6p4t"]
+[ext_resource type="Script" uid="uid://bp143y4igd7sa" path="res://data/units/unit_stats.gd" id="1_6fqjr"]
 [ext_resource type="AudioStream" uid="uid://eyjx57qspqgj" path="res://assets/sfx/bjorn_1.ogg" id="1_poga5"]
-[ext_resource type="PackedScene" uid="uid://d3qx3cbk1omcm" path="res://scenes/_abilities/bjorn_swing.tscn" id="1_y5alr"]
-[ext_resource type="Script" uid="uid://2thj6nv06jm5" path="res://data/traits/trait.gd" id="2_jemec"]
+[ext_resource type="PackedScene" uid="uid://tg737lwfmt14" path="res://scenes/_abilities/bjorn_swing.tscn" id="1_y5alr"]
+[ext_resource type="Script" uid="uid://dsyxdgrby4ar7" path="res://data/traits/trait.gd" id="2_v4q1r"]
 [ext_resource type="AudioStream" uid="uid://y2xuakbipa65" path="res://assets/sfx/bjorn_2.ogg" id="2_y5alr"]
-[ext_resource type="Resource" uid="uid://sk45lbkh6t5j" path="res://data/traits/fighter.tres" id="3_shr7q"]
+[ext_resource type="Resource" uid="uid://bekcuvjro6nqe" path="res://data/traits/fighter.tres" id="3_362j6"]
 [ext_resource type="AudioStream" uid="uid://bdseh6x313gqd" path="res://assets/sfx/bjorn_3.ogg" id="3_v1jki"]
+[ext_resource type="Resource" uid="uid://bkgurfdcihufj" path="res://data/traits/viking.tres" id="4_3x2x7"]
 [ext_resource type="AudioStream" uid="uid://ookfpdkg1k3v" path="res://assets/sfx/bjorn_4.ogg" id="4_6ud85"]
-[ext_resource type="Resource" uid="uid://bdl611ibe06a2" path="res://data/traits/viking.tres" id="4_shr7q"]
-[ext_resource type="PackedScene" uid="uid://brhrvxa73r6y6" path="res://scenes/_effects/attack_smear_effect.tscn" id="5_66cgf"]
+[ext_resource type="PackedScene" uid="uid://6xbfap3o0lej" path="res://scenes/_effects/attack_smear_effect.tscn" id="5_66cgf"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_bk82h"]
 playback_mode = 1
-random_pitch = 1.0717734
+random_pitch = 1.2
 streams_count = 4
 stream_0/stream = ExtResource("1_poga5")
 stream_1/stream = ExtResource("2_y5alr")
@@ -21,9 +21,9 @@ stream_2/stream = ExtResource("3_v1jki")
 stream_3/stream = ExtResource("4_6ud85")
 
 [resource]
-script = ExtResource("1_d6p4t")
+script = ExtResource("1_6fqjr")
 name = "Bjorn"
-traits = Array[ExtResource("2_jemec")]([ExtResource("3_shr7q"), ExtResource("4_shr7q")])
+traits = Array[ExtResource("2_v4q1r")]([ExtResource("3_362j6"), ExtResource("4_3x2x7")])
 skin_coordinates = Vector2i(1, 3)
 max_health = Array[int]([40, 50, 60])
 max_mana = 50
@@ -33,4 +33,3 @@ attack_speed = 0.75
 attack_range = 1
 ability = ExtResource("1_y5alr")
 auto_attack_sound = SubResource("AudioStreamRandomizer_bk82h")
-metadata/_custom_type_script = "uid://ibhkeatocpnu"

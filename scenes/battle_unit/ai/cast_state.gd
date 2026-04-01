@@ -6,6 +6,7 @@ signal ability_cast_finished
 var actor_unit: BattleUnit
 var ability: UnitAbility
 
+
 func enter() -> void:
 	actor_unit = actor as BattleUnit
 	actor_unit.stats.mana = 0
@@ -19,11 +20,12 @@ func enter() -> void:
 		ability.global_position = actor_unit.global_position
 		ability.ability_cast_finished.connect(_on_ability_cast_finished, CONNECT_ONE_SHOT)
 		ability.use.call_deferred()
-		
+
 
 func exit() -> void:
 	if ability:
 		ability.queue_free()
+
 
 func _on_ability_cast_finished() -> void:
 	ability_cast_finished.emit()

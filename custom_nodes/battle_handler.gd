@@ -18,6 +18,8 @@ signal enemy_won
 @export var game_area_unit_grid: UnitGrid
 @export var battle_unit_grid: UnitGrid
 @export var trait_tracker: TraitTracker
+@export var round_manager: RoundManager
+@export var enemy_spawn_points_root: Node2D
 
 @onready var scene_spawner: SceneSpawner = $SceneSpawner
 
@@ -71,7 +73,7 @@ func _prepare_fight() -> void:
 		_add_items(unit, new_unit)
 		_add_trait_bonuses(new_unit)
 	
-	for unit_coord: Vector2i in ZOMBIE_TEST_POSITIONS:
+	for unit_coord: Vector2i in _get_enemy_spawn_tiles():
 		var new_unit := scene_spawner.spawn_scene(battle_unit_grid) as BattleUnit
 		new_unit.add_to_group("enemy_units")
 		new_unit.stats = ZOMBIE
@@ -88,6 +90,35 @@ func _prepare_fight() -> void:
 		
 		for item: Item in battle_unit.item_handler.equipped_items:
 			item.apply_bonus_effect(battle_unit)
+
+
+func _get_enemy_spawn_tiles() -> Array[Vector2i]:
+	if enemy_spawn_points_root == null:
+		return ZOMBIE_TEST_POSITIONS
+
+	var enemy_count := ZOMBIE_TEST_POSITIONS.size()
+	if round_manager != null:
+		enemy_count = round_manager.get_enemy_count_for_current_round()
+
+	var all_tiles := _get_spawn_tiles_from_markers()
+	if all_tiles.is_empty():
+		return ZOMBIE_TEST_POSITIONS
+
+	all_tiles.shuffle()
+	return all_tiles.slice(0, mini(enemy_count, all_tiles.size()))
+
+
+func _get_spawn_tiles_from_markers() -> Array[Vector2i]:
+	var tiles: Array[Vector2i] = []
+
+	for child: Node in enemy_spawn_points_root.get_children():
+		if child is Marker2D:
+			var marker := child as Marker2D
+			var tile := game_area.get_tile_from_global(marker.global_position)
+			if battle_unit_grid.units.has(tile):
+				tiles.append(tile)
+
+	return tiles
 
 
 func _on_battle_unit_died() -> void:

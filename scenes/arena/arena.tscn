@@ -25,7 +25,9 @@
 [ext_resource type="PackedScene" uid="uid://dbkxxes56oj60" path="res://scenes/traits/traits.tscn" id="17_kvkwr"]
 [ext_resource type="PackedScene" uid="uid://bkwflybey1smm" path="res://scenes/battle_unit/battle_unit.tscn" id="18_l0cts"]
 [ext_resource type="Script" uid="uid://nd6fjcx1kt82" path="res://custom_nodes/trait_tracker.gd" id="20_ybinm"]
+[ext_resource type="Script" uid="uid://o0hn5xt7uy2n" path="res://scenes/arena/round_manager.gd" id="21_bxbl0"]
 [ext_resource type="PackedScene" uid="uid://bcylmwymt6b3b" path="res://scenes/start_battle_button/start_battle_button.tscn" id="21_fir7s"]
+[ext_resource type="PackedScene" uid="uid://jhsnuyv5d3nj" path="res://scenes/main_menu/game_over.tscn" id="28_c13hg"]
 
 [sub_resource type="Curve" id="Curve_gxqt7"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.204482, 1), 0.0, 0.0, 0, 0, Vector2(0.795518, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -179,13 +181,15 @@ combine_sound = ExtResource("14_4ebmt")
 [node name="BufferTimer" type="Timer" parent="UnitCombiner" unique_id=575102111]
 one_shot = true
 
-[node name="BattleHandler" type="Node" parent="." unique_id=862539824 node_paths=PackedStringArray("game_area", "game_area_unit_grid", "battle_unit_grid", "trait_tracker")]
+[node name="BattleHandler" type="Node" parent="." unique_id=862539824 node_paths=PackedStringArray("game_area", "game_area_unit_grid", "battle_unit_grid", "trait_tracker", "round_manager", "enemy_spawn_points_root")]
 script = ExtResource("17_dh340")
 game_state = ExtResource("12_wqbss")
 game_area = NodePath("../GameArea")
 game_area_unit_grid = NodePath("../GameArea/ArenaUnitGrid")
 battle_unit_grid = NodePath("../GameArea/BattleUnitGrid")
 trait_tracker = NodePath("../TraitTracker")
+round_manager = NodePath("../RoundManager")
+enemy_spawn_points_root = NodePath("../EnemySpawnPoints")
 metadata/_custom_type_script = "uid://dhb2ntovbb66k"
 
 [node name="SceneSpawner" type="Node" parent="BattleHandler" unique_id=912863299]
@@ -193,10 +197,147 @@ script = ExtResource("12_8kk48")
 scene = ExtResource("18_l0cts")
 metadata/_custom_type_script = "uid://br017kbxir65y"
 
+[node name="RoundManager" type="Node" parent="." unique_id=1219155676 node_paths=PackedStringArray("round_label", "game_over_panel", "enemy_spawn_points_root")]
+script = ExtResource("21_bxbl0")
+base_enemy_count = 2
+player_stats = ExtResource("15_54tee")
+round_label = NodePath("../UI/TopInfo/Round/MarginContainer/RoundLabel")
+game_over_panel = NodePath("../UI/GameOver")
+enemy_spawn_points_root = NodePath("../EnemySpawnPoints")
+
 [node name="TraitTracker" type="Node" parent="." unique_id=1946968006 node_paths=PackedStringArray("arena_grid")]
 script = ExtResource("20_ybinm")
 arena_grid = NodePath("../GameArea/ArenaUnitGrid")
 metadata/_custom_type_script = "uid://nd6fjcx1kt82"
+
+[node name="EnemySpawnPoints" type="Node2D" parent="." unique_id=2016409608]
+position = Vector2(288, 32)
+
+[node name="Marker2D" type="Marker2D" parent="EnemySpawnPoints" unique_id=1869245698]
+position = Vector2(176, 16)
+
+[node name="Marker2D2" type="Marker2D" parent="EnemySpawnPoints" unique_id=824351964]
+position = Vector2(176, 48)
+
+[node name="Marker2D3" type="Marker2D" parent="EnemySpawnPoints" unique_id=1892808401]
+position = Vector2(176, 80)
+
+[node name="Marker2D4" type="Marker2D" parent="EnemySpawnPoints" unique_id=180658537]
+position = Vector2(176, 112)
+
+[node name="Marker2D5" type="Marker2D" parent="EnemySpawnPoints" unique_id=261676280]
+position = Vector2(176, 144)
+
+[node name="Marker2D6" type="Marker2D" parent="EnemySpawnPoints" unique_id=1270708417]
+position = Vector2(176, 176)
+
+[node name="Marker2D7" type="Marker2D" parent="EnemySpawnPoints" unique_id=685404904]
+position = Vector2(176, 208)
+
+[node name="Marker2D8" type="Marker2D" parent="EnemySpawnPoints" unique_id=1076173991]
+position = Vector2(144, 208)
+
+[node name="Marker2D9" type="Marker2D" parent="EnemySpawnPoints" unique_id=496372671]
+position = Vector2(144, 176)
+
+[node name="Marker2D10" type="Marker2D" parent="EnemySpawnPoints" unique_id=1474507139]
+position = Vector2(144, 144)
+
+[node name="Marker2D11" type="Marker2D" parent="EnemySpawnPoints" unique_id=320484310]
+position = Vector2(144, 112)
+
+[node name="Marker2D12" type="Marker2D" parent="EnemySpawnPoints" unique_id=940752829]
+position = Vector2(144, 80)
+
+[node name="Marker2D13" type="Marker2D" parent="EnemySpawnPoints" unique_id=755933399]
+position = Vector2(144, 48)
+
+[node name="Marker2D14" type="Marker2D" parent="EnemySpawnPoints" unique_id=1866619679]
+position = Vector2(144, 16)
+
+[node name="Marker2D15" type="Marker2D" parent="EnemySpawnPoints" unique_id=629293367]
+position = Vector2(112, 16)
+
+[node name="Marker2D16" type="Marker2D" parent="EnemySpawnPoints" unique_id=39291395]
+position = Vector2(112, 48)
+
+[node name="Marker2D17" type="Marker2D" parent="EnemySpawnPoints" unique_id=731937847]
+position = Vector2(112, 80)
+
+[node name="Marker2D18" type="Marker2D" parent="EnemySpawnPoints" unique_id=644926387]
+position = Vector2(112, 112)
+
+[node name="Marker2D19" type="Marker2D" parent="EnemySpawnPoints" unique_id=1873665694]
+position = Vector2(112, 144)
+
+[node name="Marker2D20" type="Marker2D" parent="EnemySpawnPoints" unique_id=1204557868]
+position = Vector2(112, 176)
+
+[node name="Marker2D21" type="Marker2D" parent="EnemySpawnPoints" unique_id=2083220171]
+position = Vector2(112, 208)
+
+[node name="Marker2D22" type="Marker2D" parent="EnemySpawnPoints" unique_id=1898982685]
+position = Vector2(80, 208)
+
+[node name="Marker2D23" type="Marker2D" parent="EnemySpawnPoints" unique_id=2113311833]
+position = Vector2(48, 208)
+
+[node name="Marker2D24" type="Marker2D" parent="EnemySpawnPoints" unique_id=1033467557]
+position = Vector2(16, 208)
+
+[node name="Marker2D25" type="Marker2D" parent="EnemySpawnPoints" unique_id=1834011043]
+position = Vector2(16, 176)
+
+[node name="Marker2D26" type="Marker2D" parent="EnemySpawnPoints" unique_id=969512950]
+position = Vector2(48, 176)
+
+[node name="Marker2D27" type="Marker2D" parent="EnemySpawnPoints" unique_id=1505074342]
+position = Vector2(80, 176)
+
+[node name="Marker2D28" type="Marker2D" parent="EnemySpawnPoints" unique_id=2083721662]
+position = Vector2(80, 144)
+
+[node name="Marker2D29" type="Marker2D" parent="EnemySpawnPoints" unique_id=898950196]
+position = Vector2(48, 144)
+
+[node name="Marker2D30" type="Marker2D" parent="EnemySpawnPoints" unique_id=55037605]
+position = Vector2(16, 144)
+
+[node name="Marker2D31" type="Marker2D" parent="EnemySpawnPoints" unique_id=929540392]
+position = Vector2(16, 112)
+
+[node name="Marker2D32" type="Marker2D" parent="EnemySpawnPoints" unique_id=122620027]
+position = Vector2(48, 112)
+
+[node name="Marker2D33" type="Marker2D" parent="EnemySpawnPoints" unique_id=320019201]
+position = Vector2(80, 112)
+
+[node name="Marker2D34" type="Marker2D" parent="EnemySpawnPoints" unique_id=1233174155]
+position = Vector2(80, 80)
+
+[node name="Marker2D35" type="Marker2D" parent="EnemySpawnPoints" unique_id=1762228780]
+position = Vector2(48, 80)
+
+[node name="Marker2D36" type="Marker2D" parent="EnemySpawnPoints" unique_id=1418630309]
+position = Vector2(16, 80)
+
+[node name="Marker2D37" type="Marker2D" parent="EnemySpawnPoints" unique_id=956116786]
+position = Vector2(16, 48)
+
+[node name="Marker2D38" type="Marker2D" parent="EnemySpawnPoints" unique_id=387227039]
+position = Vector2(48, 48)
+
+[node name="Marker2D39" type="Marker2D" parent="EnemySpawnPoints" unique_id=699148093]
+position = Vector2(80, 48)
+
+[node name="Marker2D40" type="Marker2D" parent="EnemySpawnPoints" unique_id=1481358272]
+position = Vector2(80, 16)
+
+[node name="Marker2D41" type="Marker2D" parent="EnemySpawnPoints" unique_id=1513880994]
+position = Vector2(48, 16)
+
+[node name="Marker2D42" type="Marker2D" parent="EnemySpawnPoints" unique_id=1971540008]
+position = Vector2(16, 16)
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=1004626751]
 
@@ -204,30 +345,49 @@ metadata/_custom_type_script = "uid://nd6fjcx1kt82"
 unique_name_in_owner = true
 unit_grids = [NodePath("../../Bench/BenchUnitGrid"), NodePath("../../GameArea/ArenaUnitGrid")]
 
-[node name="TeamSizeUI" parent="UI" unique_id=1008030936 node_paths=PackedStringArray("arena_grid") instance=ExtResource("14_5evl7")]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -6.0
-offset_top = 4.0
-offset_right = 40.0
-offset_bottom = 28.0
-grow_horizontal = 2
-player_stats = ExtResource("15_54tee")
-arena_grid = NodePath("../../GameArea/ArenaUnitGrid")
-
 [node name="Traits" parent="UI" unique_id=461295540 instance=ExtResource("17_kvkwr")]
 unique_name_in_owner = true
 
-[node name="StartBattleButton" parent="UI" unique_id=912858565 node_paths=PackedStringArray("arena_grid") instance=ExtResource("21_fir7s")]
+[node name="TopInfo" type="HBoxContainer" parent="UI" unique_id=2103628036]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -40.0
-offset_top = 4.0
-offset_right = -8.0
-offset_bottom = 28.0
+offset_left = -92.5
+offset_right = 92.5
+offset_bottom = 29.0
 grow_horizontal = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 10
+
+[node name="Round" type="PanelContainer" parent="UI/TopInfo" unique_id=658604198]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/TopInfo/Round" unique_id=899612002]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 0
+
+[node name="RoundLabel" type="Label" parent="UI/TopInfo/Round/MarginContainer" unique_id=1493539062]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Round 1"
+
+[node name="StartBattleButton" parent="UI/TopInfo" unique_id=912858565 node_paths=PackedStringArray("arena_grid", "round_manager") instance=ExtResource("21_fir7s")]
+layout_mode = 2
 game_state = ExtResource("12_wqbss")
 player_stats = ExtResource("15_54tee")
-arena_grid = NodePath("../../GameArea/ArenaUnitGrid")
+arena_grid = NodePath("../../../GameArea/ArenaUnitGrid")
+round_manager = NodePath("../../../RoundManager")
+
+[node name="TeamSizeUI" parent="UI/TopInfo" unique_id=1008030936 node_paths=PackedStringArray("arena_grid") instance=ExtResource("14_5evl7")]
+layout_mode = 2
+player_stats = ExtResource("15_54tee")
+arena_grid = NodePath("../../../GameArea/ArenaUnitGrid")
+
+[node name="GameOver" parent="UI" unique_id=1323878513 instance=ExtResource("28_c13hg")]
+unique_name_in_owner = true
+visible = false
+
+[connection signal="enemy_won" from="BattleHandler" to="RoundManager" method="on_player_lost_round"]
+[connection signal="player_won" from="BattleHandler" to="RoundManager" method="on_player_won_round"]

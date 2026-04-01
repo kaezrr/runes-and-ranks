@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://y6rf0cedj4qi"]
 
-[ext_resource type="Script" uid="uid://d1box2nvo8ja8" path="res://scenes/main_menu.gd" id="1_ekxnf"]
-[ext_resource type="Texture2D" uid="uid://doybsg24etbqo" path="res://game_bg.png" id="1_l6cm7"]
+[ext_resource type="Script" uid="uid://d1box2nvo8ja8" path="res://scenes/main_menu/main_menu.gd" id="1_3rkf3"]
+[ext_resource type="Texture2D" uid="uid://doybsg24etbqo" path="res://game_bg.png" id="2_247la"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vue75"]
-texture = ExtResource("1_l6cm7")
+texture = ExtResource("2_247la")
 modulate_color = Color(0.6255971, 0.6255971, 0.62559694, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l6cm7"]
@@ -35,7 +35,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_ekxnf")
+script = ExtResource("1_3rkf3")
 
 [node name="Panel" type="Panel" parent="." unique_id=1600136227]
 layout_mode = 1

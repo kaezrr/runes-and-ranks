@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ItemDB" load_steps=13 format=3 uid="uid://hlytcy68u6yc"]
+[gd_resource type="Resource" script_class="ItemDB" format=3 uid="uid://hlytcy68u6yc"]
 
 [ext_resource type="Script" uid="uid://dg01v8kfef3f0" path="res://data/items/item_recipe.gd" id="1_j0gvu"]
 [ext_resource type="Resource" uid="uid://dw168maw12qh3" path="res://data/items/ring.tres" id="2_08acy"]

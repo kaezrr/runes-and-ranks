@@ -1,7 +1,10 @@
-[gd_resource type="Resource" script_class="UnitStats" load_steps=5 format=3 uid="uid://cxt8jraate1vr"]
+[gd_resource type="Resource" script_class="UnitStats" format=3 uid="uid://cxt8jraate1vr"]
 
 [ext_resource type="Script" uid="uid://bp143y4igd7sa" path="res://data/units/unit_stats.gd" id="1_dy7fj"]
+[ext_resource type="PackedScene" uid="uid://6xbfap3o0lej" path="res://scenes/_effects/attack_smear_effect.tscn" id="1_vyn1g"]
+[ext_resource type="PackedScene" uid="uid://db2mm88waaup7" path="res://scenes/_abilities/arthur_swing.tscn" id="1_wr0kd"]
 [ext_resource type="Script" uid="uid://dsyxdgrby4ar7" path="res://data/traits/trait.gd" id="2_4s8jw"]
+[ext_resource type="AudioStream" uid="uid://4y1bnykuj26w" path="res://melee_randomizer.tres" id="2_m6oqc"]
 [ext_resource type="Resource" uid="uid://bekcuvjro6nqe" path="res://data/traits/fighter.tres" id="3_5nwna"]
 [ext_resource type="Resource" uid="uid://clx1gl1vn35sq" path="res://data/traits/noble.tres" id="4_oqw0g"]
 
@@ -10,7 +13,12 @@ script = ExtResource("1_dy7fj")
 name = "Arthur"
 rarity = 2
 gold_cost = 4
-tier = 1
 traits = Array[ExtResource("2_4s8jw")]([ExtResource("3_5nwna"), ExtResource("4_oqw0g")])
-pool_count = 5
 skin_coordinates = Vector2i(4, 2)
+max_health = Array[int]([50, 60, 70])
+max_mana = 30
+starting_mana = 10
+attack_damage = Array[int]([8, 10, 12])
+attack_speed = 0.75
+ability = ExtResource("1_wr0kd")
+auto_attack_sound = ExtResource("2_m6oqc")

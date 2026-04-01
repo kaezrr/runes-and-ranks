@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://bkwflybey1smm"]
+[gd_scene format=3 uid="uid://bkwflybey1smm"]
 
 [ext_resource type="Script" uid="uid://bq4gnwctciu45" path="res://scenes/battle_unit/battle_unit.gd" id="1_rmpo8"]
 [ext_resource type="Texture2D" uid="uid://cx1ivjobggp8n" path="res://assets/sprites/rogues.png" id="1_tah2m"]
@@ -184,13 +184,13 @@ _data = {
 &"move": SubResource("Animation_u0yfu")
 }
 
-[node name="BattleUnit" type="Area2D"]
+[node name="BattleUnit" type="Area2D" unique_id=940070284]
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("1_rmpo8")
 stats = ExtResource("2_1myfu")
 
-[node name="Skin" type="Sprite2D" parent="."]
+[node name="Skin" type="Sprite2D" parent="." unique_id=1447567932]
 texture = ExtResource("1_tah2m")
 region_enabled = true
 region_rect = Rect2(128, 64, 32, 32)
@@ -198,76 +198,75 @@ script = ExtResource("2_rmpo8")
 coordinates = Vector2i(4, 2)
 metadata/_custom_type_script = "uid://bpfvys3yg0516"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1540288865]
 shape = SubResource("RectangleShape2D_1myfu")
 
-[node name="DetectRange" type="Area2D" parent="." node_paths=PackedStringArray("col_shape")]
+[node name="DetectRange" type="Area2D" parent="." unique_id=879454773 node_paths=PackedStringArray("col_shape")]
 script = ExtResource("5_nmiut")
 col_shape = NodePath("CollisionShape2D")
 base_range_size = 36.0
 metadata/_custom_type_script = "uid://cefxv7hcoa2el"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectRange"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectRange" unique_id=1667524021]
 debug_color = Color(0.555828, 0.00284761, 0.847295, 0.42)
 
-[node name="HurtBox" type="Area2D" parent="."]
+[node name="HurtBox" type="Area2D" parent="." unique_id=323557786]
 script = ExtResource("5_1myfu")
 metadata/_custom_type_script = "uid://deepgshpthm4v"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=1492008222]
 shape = SubResource("RectangleShape2D_nmiut")
 debug_color = Color(1, 0, 0, 0.419608)
 
-[node name="AttackAnchor" type="Node2D" parent="."]
+[node name="AttackAnchor" type="Node2D" parent="." unique_id=1329651728]
 
-[node name="AttackMarker" type="Marker2D" parent="AttackAnchor"]
+[node name="AttackMarker" type="Marker2D" parent="AttackAnchor" unique_id=1511682079]
 position = Vector2(16, 0)
 
-[node name="HealthBar" parent="." instance=ExtResource("3_4s270")]
+[node name="HealthBar" parent="." unique_id=685972868 instance=ExtResource("3_4s270")]
 offset_left = -15.0
 offset_top = -28.0
 offset_right = 15.0
 offset_bottom = -22.0
 
-[node name="ManaBar" parent="." instance=ExtResource("4_u0yfu")]
+[node name="ManaBar" parent="." unique_id=1796220392 instance=ExtResource("4_u0yfu")]
 offset_left = -15.0
 offset_top = -23.0
 offset_right = 15.0
 offset_bottom = -19.0
 
-[node name="TierIcon" parent="." instance=ExtResource("5_hf5vq")]
+[node name="TierIcon" parent="." unique_id=920006023 instance=ExtResource("5_hf5vq")]
 z_index = 1
 offset_left = -16.0
 offset_top = -21.0
 offset_right = -6.0
 offset_bottom = -11.0
 
-[node name="FSMDebugLabel" type="Label" parent="."]
-visible = false
+[node name="FSMDebugLabel" type="Label" parent="." unique_id=1538119495]
 offset_left = -65.0
 offset_top = -47.0
 offset_right = 65.0
 offset_bottom = -29.0
 horizontal_alignment = 1
 
-[node name="AbilitySpawner" type="Node" parent="."]
+[node name="AbilitySpawner" type="Node" parent="." unique_id=1369981998]
 script = ExtResource("12_w8xno")
 metadata/_custom_type_script = "uid://br017kbxir65y"
 
-[node name="AttackTimer" type="Timer" parent="."]
+[node name="AttackTimer" type="Timer" parent="." unique_id=1761497827]
 process_callback = 0
 
-[node name="FlipSprite" type="Node" parent="." node_paths=PackedStringArray("sprite")]
+[node name="FlipSprite" type="Node" parent="." unique_id=672559888 node_paths=PackedStringArray("sprite")]
 script = ExtResource("10_euuyt")
 sprite = NodePath("../Skin")
 metadata/_custom_type_script = "uid://bfscdqp6aiuqe"
 
-[node name="ItemHandler" type="Node" parent="."]
+[node name="ItemHandler" type="Node" parent="." unique_id=1503595794]
 script = ExtResource("12_a0pnp")
 item_db = ExtResource("13_kmmjn")
 metadata/_custom_type_script = "uid://c3gulxltndrkg"
 
-[node name="MeleeAttack" type="Node" parent="." node_paths=PackedStringArray("parent", "anchor", "spawn_point", "spawner")]
+[node name="MeleeAttack" type="Node" parent="." unique_id=1274873483 node_paths=PackedStringArray("parent", "anchor", "spawn_point", "spawner")]
 script = ExtResource("11_4i2cr")
 parent = NodePath("..")
 anchor = NodePath("../AttackAnchor")
@@ -275,16 +274,16 @@ spawn_point = NodePath("../AttackAnchor/AttackMarker")
 spawner = NodePath("MeleeAttackSpawner")
 metadata/_custom_type_script = "uid://b016fi4sooh3e"
 
-[node name="MeleeAttackSpawner" type="Node" parent="MeleeAttack"]
+[node name="MeleeAttackSpawner" type="Node" parent="MeleeAttack" unique_id=623307132]
 script = ExtResource("12_w8xno")
 metadata/_custom_type_script = "uid://br017kbxir65y"
 
-[node name="ModifierHandler" type="Node" parent="."]
+[node name="ModifierHandler" type="Node" parent="." unique_id=1971859394]
 script = ExtResource("13_w8xno")
 modifier_types = Array[int]([0, 1, 2, 3, 4, 5, 6])
 metadata/_custom_type_script = "uid://cexw2a6ooihoy"
 
-[node name="RangedAttack" type="Node" parent="." node_paths=PackedStringArray("parent", "anchor", "spawn_point", "spawner")]
+[node name="RangedAttack" type="Node" parent="." unique_id=773856083 node_paths=PackedStringArray("parent", "anchor", "spawn_point", "spawner")]
 script = ExtResource("11_4i2cr")
 parent = NodePath("..")
 anchor = NodePath("../AttackAnchor")
@@ -292,27 +291,25 @@ spawn_point = NodePath("../AttackAnchor/AttackMarker")
 spawner = NodePath("ProjectileSpawner")
 metadata/_custom_type_script = "uid://b016fi4sooh3e"
 
-[node name="ProjectileSpawner" type="Node" parent="RangedAttack"]
+[node name="ProjectileSpawner" type="Node" parent="RangedAttack" unique_id=1031109183]
 script = ExtResource("12_w8xno")
 metadata/_custom_type_script = "uid://br017kbxir65y"
 
-[node name="TargetFinder" type="Node" parent="." node_paths=PackedStringArray("actor")]
+[node name="TargetFinder" type="Node" parent="." unique_id=162252115 node_paths=PackedStringArray("actor")]
 script = ExtResource("10_nmiut")
 actor = NodePath("..")
 metadata/_custom_type_script = "uid://g6jcquelxqiu"
 
-[node name="UnitAI" type="Node" parent="." node_paths=PackedStringArray("debug_label", "actor")]
+[node name="UnitAI" type="Node" parent="." unique_id=1589360142 node_paths=PackedStringArray("debug_label", "actor")]
 script = ExtResource("9_hf5vq")
 debug_label = NodePath("../FSMDebugLabel")
 actor = NodePath("..")
 metadata/_custom_type_script = "uid://bml2bk8y0qsx4"
 
-[node name="UnitTooltipHandler" type="Node" parent="." node_paths=PackedStringArray("unit")]
+[node name="UnitTooltipHandler" type="Node" parent="." unique_id=214892477 node_paths=PackedStringArray("unit")]
 script = ExtResource("18_kmmjn")
 unit = NodePath("..")
 metadata/_custom_type_script = "uid://5pe3u2nqnf1w"
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_hf5vq")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1907467667]
+libraries/ = SubResource("AnimationLibrary_hf5vq")

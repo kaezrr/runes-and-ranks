@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="VikingBonus" load_steps=4 format=3 uid="uid://cfpqm7rjyob4t"]
+[gd_resource type="Resource" script_class="VikingBonus" format=3 uid="uid://cfpqm7rjyob4t"]
 
 [ext_resource type="Script" uid="uid://bnckbptql85bf" path="res://data/traits/bonuses/viking_bonus.gd" id="1_lq2kw"]
 [ext_resource type="Script" uid="uid://ejvqjqxvo541" path="res://components/modifier_value.gd" id="1_p1sbb"]

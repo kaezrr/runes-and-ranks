@@ -1,0 +1,15 @@
+[gd_resource type="AudioStreamRandomizer" format=3 uid="uid://4y1bnykuj26w"]
+
+[ext_resource type="AudioStream" uid="uid://eyjx57qspqgj" path="res://assets/sfx/bjorn_1.ogg" id="1_8cdbl"]
+[ext_resource type="AudioStream" uid="uid://y2xuakbipa65" path="res://assets/sfx/bjorn_2.ogg" id="2_tfs7c"]
+[ext_resource type="AudioStream" uid="uid://bdseh6x313gqd" path="res://assets/sfx/bjorn_3.ogg" id="3_fpp3i"]
+[ext_resource type="AudioStream" uid="uid://ookfpdkg1k3v" path="res://assets/sfx/bjorn_4.ogg" id="4_obfh3"]
+
+[resource]
+playback_mode = 1
+random_pitch = 1.2
+streams_count = 4
+stream_0/stream = ExtResource("1_8cdbl")
+stream_1/stream = ExtResource("2_tfs7c")
+stream_2/stream = ExtResource("3_fpp3i")
+stream_3/stream = ExtResource("4_obfh3")

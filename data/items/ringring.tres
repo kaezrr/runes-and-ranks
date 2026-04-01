@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Ringring" load_steps=5 format=3 uid="uid://pldk5d0k2c7"]
+[gd_resource type="Resource" script_class="Ringring" format=3 uid="uid://pldk5d0k2c7"]
 
 [ext_resource type="Script" uid="uid://ejvqjqxvo541" path="res://components/modifier_value.gd" id="1_07ps7"]
 [ext_resource type="Script" uid="uid://8o6120dyf8f1" path="res://data/items/ringring.gd" id="2_07ps7"]

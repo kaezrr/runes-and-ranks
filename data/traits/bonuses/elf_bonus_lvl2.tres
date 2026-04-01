@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ElfBonus" load_steps=4 format=3 uid="uid://df1f7810cf0w4"]
+[gd_resource type="Resource" script_class="ElfBonus" format=3 uid="uid://df1f7810cf0w4"]
 
 [ext_resource type="Script" uid="uid://ejvqjqxvo541" path="res://components/modifier_value.gd" id="1_tfowl"]
 [ext_resource type="Script" uid="uid://cg35lrajuwk72" path="res://data/traits/bonuses/elf_bonus.gd" id="2_nyap4"]
